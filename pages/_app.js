@@ -8,6 +8,7 @@ import PageChange from "components/PageChange/PageChange.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
+import "styles/custom.css"
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -49,6 +50,7 @@ export default class MyApp extends App {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <title>Mint It</title>
+          <link href='https://fonts.googleapis.com/css?family=Mitr' rel='stylesheet'></link>
         </Head>
         <Layout>
           <Component {...pageProps} />
