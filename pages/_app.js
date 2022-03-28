@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
+import "styles/custom.css"
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -49,6 +50,7 @@ export default class MyApp extends App {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <title>Mint It</title>
+          <link href='https://fonts.googleapis.com/css?family=Mitr' rel='stylesheet'></link>
         </Head>
         <Layout>
           <Component {...pageProps} />
