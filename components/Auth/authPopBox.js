@@ -89,6 +89,14 @@ const Tabs = () => {
 const AuthPopBox = (props) => {
   // dropdown props
   const [openTab, setOpenTab] = React.useState(1);
+  const [signupUsername, setSignupUsername] = React.useState("");
+  const [signupEmail, setSignupEmail] = React.useState("");
+  const [signupPasswordFirst, setSignupPasswordFirst] = React.useState("");
+  const [signupPasswordSec, setSignupPasswordSec] = React.useState("");
+  const [signinEmail, setSigninEmail] = React.useState("");
+  const [signinPassword, setSigninPassword] = React.useState("");
+
+
   return (
 
     <>
@@ -177,6 +185,7 @@ const AuthPopBox = (props) => {
                       type="email"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all custom-bg-white"
                       placeholder="Email"
+                      onChange={(e)=>setSigninEmail(e.target.value)}
                     />
                   </div>
 
@@ -186,6 +195,7 @@ const AuthPopBox = (props) => {
                       type="password"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 custom-bg-white"
                       placeholder="Password"
+                      onChange={(e)=>setSigninPassword(e.target.value)}
                     />
                   </div>
                  
@@ -194,6 +204,7 @@ const AuthPopBox = (props) => {
                     <button
                       className="custom-bg-lightblue custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 w-full ease-linear transition-all duration-150"
                       type="button"
+                      onClick={()=>console.log(signinEmail, signinPassword)}
                     >
                       LOGIN
                     </button>
@@ -213,6 +224,7 @@ const AuthPopBox = (props) => {
                     type="text"
                     className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all custom-bg-white"
                     placeholder="Username - Must be Unique"
+                    onChange={(e)=>setSignupUsername(e.target.value)}
                   />
                 </div>
                   <div className="relative w-full mb-3 mt-5">
@@ -222,6 +234,7 @@ const AuthPopBox = (props) => {
                       type="email"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all custom-bg-white"
                       placeholder="Email"
+                      onChange={(e)=>setSignupEmail(e.target.value)}
                     />
                   </div>
 
@@ -231,6 +244,7 @@ const AuthPopBox = (props) => {
                       type="password"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 custom-bg-white"
                       placeholder="Password"
+                      onChange={(e)=>setSignupPasswordFirst(e.target.value)}
                     />
                   </div>
                   <div className="relative w-full mb-3">
@@ -239,6 +253,7 @@ const AuthPopBox = (props) => {
                       type="password"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 custom-bg-white"
                       placeholder="Re-enter Password"
+                      onChange={(e)=>setSignupPasswordSec(e.target.value)}
                     />
                   </div>
                  
@@ -247,8 +262,9 @@ const AuthPopBox = (props) => {
                     <button
                       className="custom-bg-lightblue custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 w-full ease-linear transition-all duration-150"
                       type="button"
+                      onClick={()=>console.log(signupEmail, signupUsername, signupPasswordFirst, signupPasswordSec)}
                     >
-                      LOGIN
+                      CREATE ACCOUNT
                     </button>
                   </div>
                   
@@ -271,7 +287,7 @@ const AuthPopBox = (props) => {
           <button className="mt-1 custom-bg-lightblue custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
          
          
-            <span>LOGIN USING GOOGLE</span>
+            <span>REGISTER USING GOOGLE</span>
           </button>
       
           
