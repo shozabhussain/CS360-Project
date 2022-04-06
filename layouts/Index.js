@@ -7,10 +7,10 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 
 export default function Auth({ children }) {
   return (
-    <>
+    <div className="custom-bg-background custom-bg-black">
       <IndexNavbar />
       {children}
       {/* <Footer /> */}
-    </>
+    </div>
   );
 }

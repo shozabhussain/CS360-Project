@@ -29,9 +29,9 @@ export default function Index() {
       {/* <div class="bg-[url('/public/img/landing-page-bg.png')]">
       </div> */}
 
-      <div class= "h-96 w-80 br-gr">
+      {/* <div className="h-96 w-80 br-gr">
 
-      </div>
+      </div> */}
 
       <section className="pb-40">
         <div className="justify-center text-center flex flex-wrap mt-24">
