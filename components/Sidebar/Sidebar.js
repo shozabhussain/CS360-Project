@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from 'next/image'
 
 // import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 // import UserDropdown from "components/Dropdowns/UserDropdown.js";
@@ -8,6 +9,11 @@ import { useRouter } from "next/router";
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   const router = useRouter();
+
+  const myLoader = ({ src }) => {
+    return `public/img${src}`
+  }
+
   return (
     <>
       <nav className="relative z-10 flex flex-wrap items-center justify-between px-6 py-4 bg-white shadow-xl md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden md:w-64">
@@ -26,11 +32,19 @@ export default function Sidebar() {
               href="#pablo"
               className="inline-block p-8 px-8 mr-8 text-right text-sm md:block md:pb-2 custom-txt-title whitespace-nowrap"
             >
-                <i
+                {/* <i
                   className={
                     "fas fa-tv mr-2 text-sm "
                   }
-                ></i>{" "}
+                ></i> */}
+                <Image
+                  loader={myLoader}
+                  src="angular.jpg"
+                  alt="Picture of the author"
+                  width={50}
+                  height={50}
+                />
+                {" "}
               Mint it
             </a>
           </Link>

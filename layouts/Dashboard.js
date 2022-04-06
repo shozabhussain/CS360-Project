@@ -12,7 +12,7 @@ export default function Admin({ children }) {
     <>
       <Sidebar />
       {/* <AdminNavbar /> */}
-      <div className="relative md:ml-64 bg-blueGray-100">
+      <div className="relative md:ml-64 ">
         {/* <AdminNavbar /> */}
         {/* Header */}
         {/* <HeaderStats /> */}
