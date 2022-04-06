@@ -2,6 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { createPopper } from "@popperjs/core";
 import Image from 'next/image'
+import { AuthProvider } from "utils/auth";
+import { userAuth } from "utils/auth";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
+import firebaseClient from 'utils/firebaseClient'
+import {loginAuth, signupAuth} from "./authentication";
 
 const Tabs = () => {
   const [openTab, setOpenTab] = React.useState(1);
@@ -96,11 +103,18 @@ const AuthPopBox = (props) => {
   const [signinEmail, setSigninEmail] = React.useState("");
   const [signinPassword, setSigninPassword] = React.useState("");
 
+  const [loginerror, setLoginError] = React.useState("");
+  const [loginerrorShow, setLoginErrorShow] = React.useState(false);
 
+  const [signUperror, setsignUpError] = React.useState("");
+  const [signUperrorShow, setsignUpErrorShow] = React.useState(false);
+
+  const {user} = userAuth();
+  firebaseClient();
   return (
 
-    <>
-
+    <AuthProvider>
+      {/* {user != null ? console.log("UserID: ", user.uid):console.log("No user logged in")} */}
     <div
       className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
     >
@@ -177,95 +191,129 @@ const AuthPopBox = (props) => {
             {/* Login Form */}
             <p className="custom-txt-title">Enter your email and password below:</p>
             <p className="custom-txt-normal">To continue logging into the account</p>
-            <form>
+            {loginerrorShow ? <div className="bg-red-400 text-white p-2">Error! {loginerror}</div> : null}
+            <form onSubmit={(e)=>{
+              e.preventDefault();
+              loginAuth(signinEmail, signinPassword);
+              }}>
                   <div className="relative w-full mb-3 mt-5">
                   
                   
                     <input
+                    required
                       type="email"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all custom-bg-white"
                       placeholder="Email"
                       onChange={(e)=>setSigninEmail(e.target.value)}
+                      value = {signinEmail}
                     />
                   </div>
 
                   <div className="relative w-full mb-3">
                     
                     <input
+                      required
                       type="password"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 custom-bg-white"
                       placeholder="Password"
                       onChange={(e)=>setSigninPassword(e.target.value)}
+                      value={signinPassword}
                     />
                   </div>
                  
-                  <p className="custom-txt-sml">By Signing in you agree to our <a href="#" className="custom-a-blue">Terms & Conditions.</a></p>
+                  <p className="custom-txt-sml">By Signing in you agree to our <a href="#" className="custom-a-blue">Terms & Conditions.</a> </p>
                   <div className="text-center mt-6">
-                    <button
+                    <input
                       className="custom-bg-lightblue custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 w-full ease-linear transition-all duration-150"
-                      type="button"
-                      onClick={()=>console.log(signinEmail, signinPassword)}
-                    >
-                      LOGIN
-                    </button>
+                      type="submit"
+                      value="Login"
+                      />
+                      
                   </div>
-                  
+                  <p className="text-center text-gray-400 custom-txt-sml">Reset Password?</p>
                 </form>
+                
+
           </div>
           <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-             {/* Login Form */}
+             {/* Sign Up Form */}
              <p className="custom-txt-title">Enter your email and password below:</p>
             <p className="custom-txt-normal">OWN . Transfer . Verify</p>
-            <form>
+            {/* {signUperrorShow ? <div className="bg-red-400 text-white p-2">Error! {signUperror}</div> : null} */}
+            <form onSubmit={(e)=>{
+              e.preventDefault();
+              if(signupPasswordFirst === signupPasswordSec ){
+                signupAuth(signupEmail, signupPasswordFirst);
+              }
+            }}>
             <div className="relative w-full mb-3 mt-5">
                   
                   
-                  <input
+                  {/* <input
                     type="text"
                     className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all custom-bg-white"
                     placeholder="Username - Must be Unique"
                     onChange={(e)=>setSignupUsername(e.target.value)}
-                  />
+                  /> */}
                 </div>
                   <div className="relative w-full mb-3 mt-5">
                   
                   
                     <input
+                    required
                       type="email"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all custom-bg-white"
                       placeholder="Email"
-                      onChange={(e)=>setSignupEmail(e.target.value)}
+                      onChange={(e)=>{
+                        setSignupEmail(e.target.value);
+                        setsignUpErrorShow(false);
+                      
+                      }
+                      }
                     />
                   </div>
 
                   <div className="relative w-full mb-3">
                     
                     <input
+                    required
                       type="password"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 custom-bg-white"
                       placeholder="Password"
-                      onChange={(e)=>setSignupPasswordFirst(e.target.value)}
+                      onChange={(e)=>{
+                        setSignupPasswordFirst(e.target.value)
+                        setsignUpErrorShow(false);
+                      }}
                     />
                   </div>
                   <div className="relative w-full mb-3">
                     
                     <input
+                    required
                       type="password"
                       className="border-2 custom-rounded-20 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 custom-bg-white"
                       placeholder="Re-enter Password"
-                      onChange={(e)=>setSignupPasswordSec(e.target.value)}
+                      onChange={(e)=>{
+                        setSignupPasswordSec(e.target.value);
+                        setsignUpErrorShow(false);
+                      }
+                      }
+
                     />
+                    {signupPasswordFirst != signupPasswordSec ? <p className="custom-txt-sml text-red-600">Password <span className="font-bold underline">NOT</span> Match!</p> : <p className="custom-txt-sml text-red-600">Password <span className="font-bold underline">Matched!</span></p>}
                   </div>
                  
                   <p className="custom-txt-sml">By Signing in you agree to our <a href="#" className="custom-a-blue">Terms & Conditions.</a></p>
                   <div className="text-center mt-6">
-                    <button
+                    <input
                       className="custom-bg-lightblue custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 w-full ease-linear transition-all duration-150"
-                      type="button"
-                      onClick={()=>console.log(signupEmail, signupUsername, signupPasswordFirst, signupPasswordSec)}
-                    >
-                      CREATE ACCOUNT
-                    </button>
+                      type="submit"
+                      value = "Create Account"
+                      
+                        
+
+                    />
+                    
                   </div>
                   
                 </form>
@@ -301,7 +349,7 @@ const AuthPopBox = (props) => {
       </div>
     </div>
     <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-  </>
+  </AuthProvider>
 
   );
 };

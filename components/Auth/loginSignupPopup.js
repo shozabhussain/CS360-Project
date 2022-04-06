@@ -2,10 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { createPopper } from "@popperjs/core";
 import AuthPopBox from "./authPopBox";
+import { AuthProvider } from "utils/auth";
 const LoginSignup = (props) => {
   const [showLogin, setShowLogin] = React.useState(false);
   return (
-    <>
+    <AuthProvider>
     {showLogin ? <AuthPopBox showLoginProp = {(x) => setShowLogin(x)}/> : null}
       <button
         className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
@@ -17,7 +18,7 @@ const LoginSignup = (props) => {
           Login/Signup
       </button>
      
-    </>
+    </AuthProvider>
   );
 };
 
