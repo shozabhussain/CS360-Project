@@ -1,26 +1,37 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 
-import DashboardLayout from "layouts/Dashboard.js";
+//import DashboardLayout from "layouts/Dashboard.js";
 
 // Landing Page
 
 export default function Index() {
   return (
     <>
+      <div className="flex flex-wrap custom-txt-title mt-20">
+        <a>
+        Edit Profile
+        </a>
+      </div>
 
-      <section className="mt-48 pb-40">
-        <div className="justify-center text-center flex flex-wrap mt-24">
-          <div className="w-full md:w-6/12 px-12 md:px-4">
-            <h2 className="custom-txt-title text-4xl">
-              Edit Profile
-            </h2>
+      {/* <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+        <form>
+          <div className="flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+                  Username
+                </label>
+                  <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="lucky.jesse">
+                    </input>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-
+        </form>
+      </div> */}
     </>
+
   );
 }
 
-Index.layout = DashboardLayout;
+// Index.layout = DashboardLayout;
