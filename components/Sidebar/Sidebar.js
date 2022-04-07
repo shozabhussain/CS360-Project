@@ -37,13 +37,13 @@ export default function Sidebar() {
                     "fas fa-tv mr-2 text-sm "
                   }
                 ></i> */}
-                <Image
+                {/* <Image
                   loader={myLoader}
                   src="angular.jpg"
                   alt="Picture of the author"
                   width={50}
                   height={50}
-                />
+                /> */}
                 {" "}
               Mint it
             </a>
