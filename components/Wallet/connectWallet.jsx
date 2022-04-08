@@ -57,7 +57,7 @@ const ConnectWallet = (props) => {
           <div className="relative p-6 flex justify-center items-center">
 
           <div className="justify-center items-end">
-              <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/zb6mr0czpplgex0lsqml" width="50%" />
+              <img src="/img/pattern_nextjs.png" width="50%" />
           </div>    
           <div>
               <p>No Information</p>
