@@ -23,40 +23,110 @@ Document
   /* flex-wrap: wrap; */
   /* flex-wrap: wrap-reverse; */
   /* flex-flow: column wrap; */
-  
-  
+}
+
+.fcontainerSecond{
+  /* border: 2px solid grey; */
+  /* border: full width; */
+  height: 15vh;
+  display: flex;
+  /* flex-direction: column-reverse; */
+  /* justify-content: flex-end; */
+  /* justify-content: space-around; */
+  /* justify-content: flex-start; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center;  */
+  /* align-items: flex-end; */
+  /* align-items: flex-start; */
+  /* align-self: left; */
+  /* flex-wrap: wrap; */
+  /* flex-wrap: wrap-reverse; */
+  /* flex-flow: column wrap; */
+}
+
+.fconButton{
+  height: 15vh;
+  justify-content: center;
+  /* display: inline-block; */
+  display: flex;
+  justify-content: center;
+}
+
+.fcontainerTitle{
+  height: 5vh;
+  display: flex;
+  /* justify-content: space-evenly; */
+  margin:12px;
+  width: 220px;
+  height: 50px;
+}
+
+.fitemTitle{
+  height: 2vh;
+  margin:12px;
 }
 
 .fitem{
+  border-radius: 10px;
   background-color: red;
   border: 2px solid black;
   margin:12px;
   width: 122px;
   height: 122px;
+  text-align: left;
 }
 
 .fitemLarge{
-  background-color: red;
-  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  border: 2px solid yellow;
   margin:12px;
-  width: 300px;
-  height: 308px;
+  width: 400px;
+  height: 400px;
+  /* margin-left: auto;
+  margin-right: auto; */
+
 }
 
 .fitemMedium{
-  background-color: red;
-  border: 2px solid black;
+  border-radius: 10px;
+  background-color: yellow;
+  border: 2px solid yellow;
   margin:12px;
   width: 220px;
-  height: 120px;
+  height: 80px;
+  /* text-align: justify; */
 }
 
+.fitemMediumNext{
+  border-radius: 10px;
+  background-color: blue;
+  border: 2px solid blue;
+  margin:12px;
+  width: 220px;
+  height: 80px;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  align-items: center; 
+  color: white;
+}
+
+
 .fitemSmall{
-  background-color: red;
-  border: 2px solid black;
+  border-radius: 10px;
+  background-color: black;
+  border: 2px solid white;
   margin:12px;
   width: 220px;
   height: 50px;
+  color: white;
+  align-content: center;
+  justify-content: center;
+  text-align: left;
+  /* text-emphasis-color: white;
+  text-decoration: solid; */
 }
 
 /**
