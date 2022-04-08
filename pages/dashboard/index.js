@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from "react";
+import React, {useEffect} from "react";
 
 import DashboardLayout from "layouts/Dashboard.js";
 import { AuthProvider } from "utils/auth";
@@ -7,11 +7,24 @@ import { userAuth } from "utils/auth";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-import firebaseClient from 'utils/firebaseClient'
-
+import { userAcessToken } from "utils/fetchUserDetails";
+import firebaseClient from 'utils/firebaseClient';
+import ConnectWallet from "components/Wallet/connectWallet";
 // Landing Page
 
 export default function Index() {
+
+ 
+    useEffect(() => {
+      const accessToken = userAcessToken();
+      if (!accessToken){
+        console.log("isko ghar lekar jaao")
+        window.location.href="/"
+
+      }
+
+      
+    }, []);
   const {user} = userAuth();
   firebaseClient();
   return (
@@ -23,6 +36,8 @@ export default function Index() {
 
                   await firebase.auth().signOut().then(() => {
                     // Sign-out successful.
+                    localStorage.clear();
+
                     window.location.href = "/"
                   }).catch((error) => {
                     console.log("Signout Error: ", error)
@@ -42,6 +57,7 @@ export default function Index() {
             </h2>
           </div>
         </div>
+        <ConnectWallet />
       </section>
 
     </>

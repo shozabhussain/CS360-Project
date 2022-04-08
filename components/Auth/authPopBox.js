@@ -8,7 +8,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import firebaseClient from 'utils/firebaseClient'
-import {loginAuth, signupAuth} from "./authentication";
+import {loginAuth, signupAuth, signInGoogle} from "./authentication";
+import { useRouter } from "next/router";
 
 const Tabs = () => {
   const [openTab, setOpenTab] = React.useState(1);
@@ -94,6 +95,8 @@ const Tabs = () => {
   );
 };
 const AuthPopBox = (props) => {
+  
+  const router = useRouter();
   // dropdown props
   const [openTab, setOpenTab] = React.useState(1);
   const [signupUsername, setSignupUsername] = React.useState("");
@@ -111,9 +114,16 @@ const AuthPopBox = (props) => {
 
   const {user} = userAuth();
   firebaseClient();
+
+  const registerWithGoogle = () => {
+    signInGoogle().then((user) => {
+      router.push("/dashboard")
+    });
+  }
+
   return (
 
-    <AuthProvider>
+    <>
       {/* {user != null ? console.log("UserID: ", user.uid):console.log("No user logged in")} */}
     <div
       className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
@@ -195,6 +205,7 @@ const AuthPopBox = (props) => {
             <form onSubmit={(e)=>{
               e.preventDefault();
               loginAuth(signinEmail, signinPassword);
+            
               }}>
                   <div className="relative w-full mb-3 mt-5">
                   
@@ -332,7 +343,7 @@ const AuthPopBox = (props) => {
           <p className="custom-txt-sml text-center">Not registered account yet? <a href="#" className="custom-a-blue">Sign Up NOW!.</a></p>
              
          
-          <button className="mt-1 custom-bg-lightblue custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
+          <button onClick={registerWithGoogle} className="mt-1 custom-bg-lightblue custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
          
          
             <span>REGISTER USING GOOGLE</span>
@@ -349,7 +360,7 @@ const AuthPopBox = (props) => {
       </div>
     </div>
     <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-  </AuthProvider>
+  </>
 
   );
 };

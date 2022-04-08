@@ -8,6 +8,8 @@ import React from "react";
 // import FooterAdmin from "components/Footers/FooterAdmin.js";
 
 export default function Admin({ children }) {
+ 
+
   return (
     <>
       {/* <Sidebar /> */}
