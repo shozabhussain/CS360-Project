@@ -57,18 +57,29 @@ export default function Index() {
               </div>
             </div>
 
-            <div class="pl-10">
-              <div class="pl-10">
-                <label className="block custom-txt-title text-sm mb-1" for="grid-password">
+            <div className="pl-3 py-6">
+            <button class="custom-bg-red hover:bg-blue-700 text-white font-bold py-2 px-4 rounded custom-bg-lightblue justify-center">
+              Apply for Verification
+            </button>
+            </div>
+
+            <div class="pl-10 w-32">
+              <div class="pl-10 w-32 ">
+                <label className="block custom-txt-title text-sm mb-1 " for="grid-password">
                   Connected Wallet:
                 </label>
-                  <input type="text" class="border-0 px-3 py-3 placeholder-transparent text-blueGray-600 custom-bg-white custom-txt-title uppercase rounded text-sm shadow focus:outline-none focus:ring  ease-linear transition-all duration-150" value="demo mint it">
-                    </input>
+                <div className="box-border border-4 flex flex-auto flex-wrap custom-bg-offwhite rounded-lg">
+                hellok
+                </div>
+                  {/* <input type="text" class="px-3 py-3 placeholder-transparent text-blueGray-600 custom-bg-white custom-txt-title uppercase rounded-lg text-sm shadow focus:outline-none focus:ring  ease-linear transition-all duration-150" value="demo mint it">
+                    </input> */}
                  </div>
             </div>
           </div>
         </form>
       </div>
+
+
 
       <div className="justify-center pt-6 mt-24 flex">
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded custom-bg-lightblue justify-center">

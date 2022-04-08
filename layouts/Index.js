@@ -10,7 +10,7 @@ export default function Auth({ children }) {
     <>
       <IndexNavbar />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
