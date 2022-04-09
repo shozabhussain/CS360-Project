@@ -9,7 +9,7 @@ export default function Navbar() {
 			</div>
 			<ul className="flex w-10/12 items-center justify-center">
 				<li className="mx-4">
-					<Link href="#">About</Link>
+					<Link href="/">About</Link>
 				</li>
 				<li className="mx-4">
 					<Link href="/track">Track</Link>
