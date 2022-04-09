@@ -44,6 +44,9 @@ const loginAuth = async (signinEmail, signinPassword) => {
     })
     .catch(function (error) {
       console.log("Error:", error.message);
+      return new Promise((resolve, reject) => {
+        reject(error);
+      });
       // const message = error.message;
       // setLoginError(message);
       // setLoginErrorShow(true);
@@ -61,6 +64,9 @@ const signupAuth = async (signupEmail, signupPasswordFirst) => {
     })
     .catch(function (error) {
       console.log(error.message);
+      return new Promise((resolve, reject) => {
+        reject(error);
+      });
     });
 };
 

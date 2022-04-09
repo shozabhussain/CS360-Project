@@ -25,26 +25,6 @@ export default function Index() {
   return (
     <>
       <section className="mt-48 pb-40">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={async () => {
-            await firebase
-              .auth()
-              .signOut()
-              .then(() => {
-                // Sign-out successful.
-                localStorage.clear();
-
-                router.push("/");
-              })
-              .catch((error) => {
-                console.log("Signout Error: ", error);
-                // An error happened.
-              });
-          }}
-        >
-          Sign Out
-        </button>
         <div className="justify-center text-center flex flex-wrap mt-24">
           <div className="w-full md:w-6/12 px-12 md:px-4">
             <h2 className="font-semibold text-4xl">View Collection</h2>

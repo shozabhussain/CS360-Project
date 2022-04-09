@@ -70,7 +70,7 @@ const UserMenuDropdown = () => {
               >
                 <div className="flex w-full text-base">
                   <div className=" w-1/5">
-                    <i class="fa fa-user"></i>
+                    <i className="fa fa-user"></i>
                   </div>
                   <div className=" w-4/5">My Profile</div>
                 </div>
@@ -85,7 +85,7 @@ const UserMenuDropdown = () => {
               >
                 <div className="flex w-full text-base">
                   <div className=" w-1/5">
-                    <i class="fa fa-cog"></i>
+                    <i className="fa fa-cog"></i>
                   </div>
                   <div className=" w-4/5">Settings</div>
                 </div>

@@ -131,14 +131,24 @@ const AuthPopBox = (props) => {
   };
 
   const registerWithEmail = (signinEmail, signinPassword) => {
-    loginAuth(signinEmail, signinPassword).then((user) => {
-      router.push("/dashboard");
-    });
+    loginAuth(signinEmail, signinPassword)
+      .then((user) => {
+        router.push("/dashboard");
+      })
+      .catch((error) => {
+        setLoginError(error.message);
+        setLoginErrorShow(true);
+      });
   };
   const signUpWithEmail = (signupEmail, signupPasswordFirst) => {
-    signupAuth(signupEmail, signupPasswordFirst).then((user) => {
-      router.push("/dashboard");
-    });
+    signupAuth(signupEmail, signupPasswordFirst)
+      .then((user) => {
+        router.push("/dashboard");
+      })
+      .catch((error) => {
+        setsignUpError(error.message);
+        setsignUpErrorShow(true);
+      });
   };
 
   return (
@@ -217,8 +227,9 @@ const AuthPopBox = (props) => {
                   To continue logging into the account
                 </p>
                 {loginerrorShow ? (
-                  <div className="bg-red-400 text-white p-2">
-                    Error! {loginerror}
+                  <div className=" bg-red-600 text-white p-2 mt-2 mb-2 rounded-lg flex w-full justify-center items-center">
+                    <i className="fa fa-exclamation-circle mr-2"></i>{" "}
+                    {loginerror}
                   </div>
                 ) : null}
                 <form
@@ -257,7 +268,7 @@ const AuthPopBox = (props) => {
                   </p>
                   <div className="text-center mt-6">
                     <input
-                      className="custom-bg-lightblue custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 w-full ease-linear transition-all duration-150"
+                      className="custom-bg-lightblue cursor-pointer custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 w-full ease-linear transition-all duration-150"
                       type="submit"
                       value="Login"
                     />
@@ -274,6 +285,12 @@ const AuthPopBox = (props) => {
                 </p>
                 <p className="custom-txt-normal">OWN . Transfer . Verify</p>
                 {/* {signUperrorShow ? <div className="bg-red-400 text-white p-2">Error! {signUperror}</div> : null} */}
+                {signUperrorShow ? (
+                  <div className=" bg-red-600 text-white p-2 mt-2 mb-2 rounded-lg flex w-full justify-center items-center">
+                    <i className="fa fa-exclamation-circle mr-2"></i>{" "}
+                    {signUperror}
+                  </div>
+                ) : null}
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
@@ -347,7 +364,7 @@ const AuthPopBox = (props) => {
                   </p>
                   <div className="text-center mt-6">
                     <input
-                      className="custom-bg-lightblue custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 w-full ease-linear transition-all duration-150"
+                      className="custom-bg-lightblue cursor-pointer custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 w-full ease-linear transition-all duration-150"
                       type="submit"
                       value="Create Account"
                     />
