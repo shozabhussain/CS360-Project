@@ -63,4 +63,8 @@
     background-color: #E00909
 }
 
-
+.custom-txt-normal-mitr{
+    font-size: 18px;
+    font-weight:600;
+    font-family: "Mitr";
+}
