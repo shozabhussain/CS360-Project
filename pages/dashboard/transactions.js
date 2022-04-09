@@ -13,7 +13,7 @@ export default function Index() {
       </div>
 
       <div className="mx-4 px-12 mt-8 justify-center items-center ">
-        <div className="w-full box-border custom-bg-offwhite rounded-lg  justify-center items-center py-2 p-14">
+        <div className="w-full box-border custom-bg-offwhite rounded-lg  justify-center items-center py-3 p-14">
           <div className="flex flex-wrap w-full">
             <button class="bg-black mx-auto hover:bg-blue-700 text-white font-bold py-2 px-12 rounded custom-bg-lightblue justify-center">
               Failed
@@ -35,8 +35,7 @@ export default function Index() {
           </div>
 
           <div>
-            <hr className="w-full mt-5 border-gray-300 border-2">
-            </hr>
+            <hr className="w-full mt-5 border-gray-300 border-2"></hr>
           </div>
 
           <div className="box-border w-full border-0 flex flex-wrap custom-bg-darkblue rounded-lg p-5 my-4">
@@ -57,7 +56,6 @@ export default function Index() {
                 <span className="mr-1 custom-txt-normal-mitr">Fees:</span>
                 0.00018 STX
               </p>
-
             </div>
 
             <div className="w-2/12 ml-3 justify-center items-center">
