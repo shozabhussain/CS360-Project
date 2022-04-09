@@ -21,14 +21,14 @@ export default function Index() {
 
             <button class="bg-white mx-auto flex flex-wrap hover:bg-blue-700 text-black font-bold py-2 px-12 rounded custom-bg-lightblue justify-center">
               <div className="mr-3">
-                <i className="fa-solid fa-check fa-lg"></i>
+              <i class="fa fa-check-circle fa-lg"></i>
               </div>
               <div>Confirmed</div>
             </button>
 
             <button class="bg-white mx-auto flex hover:bg-blue-700 text-black font-bold py-2 px-12 rounded custom-bg-lightblue justify-center">
               <div className="mr-3">
-                <i className="fa-solid fa-exclamation-circle fa-lg"></i>
+              <i class="fa fa-exclamation-triangle fa-lg"></i>
               </div>
               <div>Pending</div>
             </button>
@@ -111,7 +111,7 @@ export default function Index() {
               </div>
 
               <div className="my-4 justify-end items-center pl-4 ml-1">
-                <i className="fas fa-chevron-circle-up  fa-lg justify-end items-center "></i>
+                <i className="fas fa-chevron-circle-up fa-lg justify-end items-center "></i>
               </div>
             </div>
           </div>
