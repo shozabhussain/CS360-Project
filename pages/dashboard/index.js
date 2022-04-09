@@ -9,7 +9,6 @@ import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { userAcessToken } from "utils/fetchUserDetails";
 import firebaseClient from "utils/firebaseClient";
-import ConnectWallet from "components/Wallet/connectWallet";
 import { useRouter } from "next/router";
 // Landing Page
 
@@ -51,7 +50,6 @@ export default function Index() {
             <h2 className="font-semibold text-4xl">View Collection</h2>
           </div>
         </div>
-        <ConnectWallet />
       </section>
     </>
   );

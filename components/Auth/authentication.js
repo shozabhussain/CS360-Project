@@ -10,6 +10,14 @@ import { useRouter } from "next/router";
 const firebaseAuth = getAuth(firebaseClient());
 const provider = new GoogleAuthProvider();
 
+const walletConnect = async () => {
+  return new Promise((resolve) => {
+    resolve(1);
+  });
+
+  // window.location.href = "/dashboard"
+};
+
 const signInGoogle = async () => {
   const { user } = await signInWithPopup(firebaseAuth, provider);
   const { refreshToken, providerData } = user;
@@ -56,4 +64,4 @@ const signupAuth = async (signupEmail, signupPasswordFirst) => {
     });
 };
 
-export { loginAuth, signupAuth, signInGoogle };
+export { loginAuth, signupAuth, signInGoogle, walletConnect };

@@ -113,11 +113,20 @@ const AuthPopBox = (props) => {
   const { user } = userAuth();
   firebaseClient();
 
+  const fetchWalletID = () => {
+    // Return Wallet ID if any
+  };
+
   const registerWithGoogle = () => {
     signInGoogle().then((user) => {
-      props.showConnectWalletProp(true);
-      props.showLoginProp(false);
-      //router.push("/dashboard");
+      if (1) {
+        // check wallet already connected
+        router.push("/dashboard");
+      } else {
+        // Ask to connect wallet again
+        props.showConnectWalletProp(true);
+        props.showLoginProp(false);
+      }
     });
   };
 
