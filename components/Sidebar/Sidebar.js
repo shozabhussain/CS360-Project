@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Image from 'next/image'
 
 // import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 // import UserDropdown from "components/Dropdowns/UserDropdown.js";
@@ -9,11 +8,6 @@ import Image from 'next/image'
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   const router = useRouter();
-
-  const myLoader = ({ src }) => {
-    return `public/img${src}`
-  }
-
   return (
     <>
       <nav className="relative z-10 flex flex-wrap items-center justify-between px-6 py-4 bg-white shadow-xl md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden md:w-64">
@@ -32,20 +26,7 @@ export default function Sidebar() {
               href="#pablo"
               className="inline-block p-8 px-8 mr-8 text-right text-sm md:block md:pb-2 custom-txt-title whitespace-nowrap"
             >
-                {/* <i
-                  className={
-                    "fas fa-tv mr-2 text-sm "
-                  }
-                ></i> */}
-                {/* <Image
-                  loader={myLoader}
-                  src="angular.jpg"
-                  alt="Picture of the author"
-                  width={50}
-                  height={50}
-                /> */}
-                {" "}
-              Mint it
+              <i className={"fas fa-tv mr-2 text-sm "}></i> Mint it
             </a>
           </Link>
           {/* User */}
@@ -53,9 +34,7 @@ export default function Sidebar() {
             <li className="relative inline-block">
               {/* <NotificationDropdown /> */}
             </li>
-            <li className="relative inline-block">
-              {/* <UserDropdown /> */}
-            </li>
+            <li className="relative inline-block">{/* <UserDropdown /> */}</li>
           </ul>
           {/* Collapse */}
           <div
@@ -94,7 +73,7 @@ export default function Sidebar() {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="w-full h-12 px-3 py-2 text-base font-normal leading-snug bg-white border border-0 border-solid rounded shadow-none outline-none border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 focus:outline-none"
+                  className="w-full h-12 px-3 py-2 text-base font-normal leading-snug bg-white border-0 border-solid rounded shadow-none outline-none border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 focus:outline-none"
                 />
               </div>
             </form>
@@ -107,10 +86,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Track
@@ -123,10 +102,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     View NFTs
@@ -139,10 +118,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Mint NFTs
@@ -155,10 +134,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Verified Manufacturers
@@ -171,10 +150,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Transactions
@@ -187,10 +166,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     About
@@ -203,10 +182,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Contact
@@ -219,20 +198,17 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:text-blueGray-500"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:text-blueGray-500"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     How does it work?
                   </a>
                 </Link>
               </li>
-
-
             </ul>
-
           </div>
         </div>
       </nav>

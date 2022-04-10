@@ -1247,6 +1247,11 @@ select {
   background-color: rgba(99, 102, 241, var(--tw-bg-opacity));
 }
 
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
+}
+
 .bg-lightBlue-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(186, 230, 253, var(--tw-bg-opacity));
@@ -1375,6 +1380,11 @@ select {
 .bg-blueGray-800 {
   --tw-bg-opacity: 1;
   background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
 }
 
 .focus\:bg-white:focus {
@@ -1598,6 +1608,10 @@ select {
 
 .border-2 {
   border-width: 2px;
+}
+
+.border-4 {
+  border-width: 4px;
 }
 
 .border {
@@ -2332,6 +2346,10 @@ select {
   margin-top: 2rem;
 }
 
+.mr-8 {
+  margin-right: 2rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -2703,6 +2721,11 @@ select {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .py-10 {
@@ -3494,6 +3517,10 @@ select {
   width: 4rem;
 }
 
+.w-32 {
+  width: 8rem;
+}
+
 .w-auto {
   width: auto;
 }
@@ -3506,8 +3533,16 @@ select {
   width: 8.333333%;
 }
 
+.w-3\/12 {
+  width: 25%;
+}
+
 .w-6\/12 {
   width: 50%;
+}
+
+.w-9\/12 {
+  width: 75%;
 }
 
 .w-10\/12 {
@@ -3829,6 +3864,11 @@ select {
 
   .md\:overflow-y-auto {
     overflow-y: auto;
+  }
+
+  .md\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .md\:px-4 {

@@ -54,6 +54,10 @@
     font-family: "Mitr";
 }
 
+custom-bg-dashboard{
+    background: #828282;
+}
+
 .custom-a-blue{
     color: #053BA6;
     text-decoration: underline;
@@ -62,4 +66,13 @@
 .custom-bg-log {
     background-image: url("../public/img/vue.jpg");
     /* background-size: cover; */
+}
+.custom-bg-red{
+    background-color: #E00909
+}
+
+.custom-txt-normal-mitr{
+    font-size: 18px;
+    font-weight:600;
+    font-family: "Mitr";
 }
