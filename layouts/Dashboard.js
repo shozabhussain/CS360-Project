@@ -11,7 +11,7 @@ export default function Admin({ children }) {
   return (
     <>
       <Sidebar />
-      <div className="relative md:ml-64">
+      <div className="relative md:ml-64 bg-black bg-[url('/img/dashboardbg.png')] bg-auto">
         {/* <AdminNavbar /> */}
         {/* Header */}
         {/* <HeaderStats /> */}
