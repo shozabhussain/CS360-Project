@@ -72,3 +72,7 @@
     padding: 10px;
   }
   
+.custom-bg-log {
+    background-image: url("../public/img/vue.jpg");
+    /* background-size: cover; */
+}

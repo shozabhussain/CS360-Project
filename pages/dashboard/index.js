@@ -13,26 +13,26 @@ import { useRouter } from "next/router";
 // Landing Page
 
 export default function Index() {
-  const router = useRouter();
-  useEffect(() => {
-    const accessToken = userAcessToken();
-    if (!accessToken) {
-      router.push("/");
-    }
-  }, []);
-  const { user } = userAuth();
-  firebaseClient();
-  return (
-    <>
-      <section className="mt-48 pb-40">
-        <div className="justify-center text-center flex flex-wrap mt-24">
-          <div className="w-full md:w-6/12 px-12 md:px-4">
-            <h2 className="font-semibold text-4xl">View Collection</h2>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+	const router = useRouter();
+	useEffect(() => {
+		const accessToken = userAcessToken();
+		if (!accessToken) {
+			router.push("/");
+		}
+	}, []);
+	const { user } = userAuth();
+	firebaseClient();
+	return (
+		<>
+			<section className="mt-48 pb-40">
+				<div className="justify-center text-center flex flex-wrap mt-24">
+					<div className="w-full md:w-6/12 px-12 md:px-4">
+						<h2 className="font-semibold text-4xl">View Collection</h2>
+					</div>
+				</div>
+			</section>
+		</>
+	);
 }
 
 Index.layout = DashboardLayout;
