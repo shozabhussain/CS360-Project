@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import DashboardLayout from "layouts/Dashboard.js";
 
@@ -25,10 +25,6 @@ export default function Index() {
 	const [design, setDesign] = useState();
 	const [country, setCountry] = useState();
 	const [gender, setGender] = useState();
-
-	useEffect(() => {
-		storage.listFiles((names) => console.log(names));
-	}, []);
 
 	const handleMintNft = () => {
 		const imageStr = nftImg.toString();

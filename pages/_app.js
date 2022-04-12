@@ -6,6 +6,8 @@ import Router from "next/router";
 
 import PageChange from "components/PageChange/PageChange.js";
 
+import { storage } from "utils/auth-wallet";
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import "styles/custom.css";
@@ -34,6 +36,12 @@ export default class MyApp extends App {
 
 		return { pageProps };
 	}
+
+	componentDidMount() {
+		// Connect to Gaia Hub
+		storage.listFiles(() => {});
+	}
+
 	render() {
 		const { Component, pageProps } = this.props;
 
