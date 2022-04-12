@@ -1,7 +1,15 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import DashboardLayout from "layouts/Dashboard.js";
+
+import { getUserData, networkType, storage, myStxAddress } from "utils/auth-wallet";
+import { createSha2Hash } from "@stacks/encryption";
+import { openContractCall } from "@stacks/connect";
+
+import { standardPrincipalCV, stringAsciiCV, bufferCV } from "@stacks/transactions";
+
+import { v4 as uuidv4 } from "uuid";
 
 // Landing Page
 
@@ -19,6 +27,9 @@ export default function Index() {
 	const [gender, setGender] = useState();
 
 	const handleMintNft = () => {
+		const imageStr = nftImg.toString();
+		const imageBuff = Buffer.from(imageStr);
+
 		const nftMetaData = {
 			productName: productName,
 			category: category,
@@ -29,6 +40,62 @@ export default function Index() {
 			country: country,
 			gender: gender,
 		};
+		const fileContent = JSON.stringify(nftMetaData);
+
+		const fileOptions = {
+			encrypt: false,
+			contentType: "application/json",
+			dangerouslyIgnoreEtag: true,
+		};
+		const imageFileOptions = {
+			encrypt: false,
+			contentType: "image/jpeg",
+			dangerouslyIgnoreEtag: true,
+		};
+
+		// Now calculate the hash of the filedata
+		const dataBuff = Buffer.from(fileContent);
+		const wholeBuff = Buffer.concat([dataBuff, imageBuff]);
+
+		const randomId = uuidv4().toString().slice(0, 29);
+		const fileName = randomId + ".json";
+		const imageFileName = randomId + ".jpg";
+
+		const tokenUri = getUserData().gaiaHubConfig.address + "/" + randomId;
+
+		createSha2Hash().then((sha2Hash) => {
+			sha2Hash.digest(wholeBuff, "sha256").then((resultBuff) => {
+				Promise.all([storage.putFile(fileName, fileContent, fileOptions), storage.putFile(imageFileName, nftImg, imageFileOptions)])
+					.then(() => {
+						// Successfully placed all the files
+
+						const functionArgs = [standardPrincipalCV(myStxAddress()), stringAsciiCV(tokenUri)];
+
+						const options = {
+							contractAddress: "STWT4MSG1A77TYD4YQ0R9VRWQAV9D1JH0EHK4QCA",
+							contractName: "xenacious-magenta-cod",
+							functionName: "mint",
+							functionArgs,
+							network: networkType(),
+							appDetails: {
+								name: "Mint It",
+								icon: window.location.origin + "/logo.svg",
+							},
+							onFinish: (data) => {
+								console.log("Stacks Transaction:", data.stacksTransaction);
+								console.log("Transaction ID:", data.txId);
+								console.log("Raw transaction:", data.txRaw);
+							},
+						};
+
+						openContractCall(options);
+					})
+					.catch((e) => {
+						console.log(e.message);
+						console.log("There were some troubles uploading information on your Gaia Hub, kindly retry. If this error persists then please try back in a few minuters");
+					});
+			});
+		});
 	};
 
 	const handleImageInput = (e) => {
