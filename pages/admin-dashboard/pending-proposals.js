@@ -8,12 +8,12 @@ import DashboardLayout from "layouts/Dashboard.js";
 export default function Index() {
   return (
     <>
-      <div className="mx-4 border-2 mt-24 px-12">
-        <div className="justify-center text-center w-full flex flex-wrap mt-24 custom-txt-title pt-0 border-2">
+      <div className="mx-4 mt-48 px-12">
+        <div className="justify-center text-center w-full flex flex-wrap mt-24 custom-txt-title pt-0 ">
           Verification Request Proposal
         </div>
 
-        <div className="flex flex-wrap border-2 mt-10">
+        <div className="flex flex-wrap mt-10 ">
           <div className="flex items-center justify-center">
             <div className="datepicker form-floating mb-3 xl:w-96 flex">
               <input
@@ -27,7 +27,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center ml-auto">
             <div className="xl:w-96">
               <div className="input-group relative flex flex-wrap items-stretch w-full">
                 <input
@@ -63,14 +63,14 @@ export default function Index() {
           </div>
         </div>
 
-        <div className="border-2 flex flex-wrap justify-center items-center mt-4">
-          <div className="mx-4 px-12 border-2">
+        <div className=" flex flex-wrap justify-center items-center mt-10 custom-bg-yellow py-2 rounded">
+          <div className=" px-6 ">
             <img src="/img/heylayer-logo.png" class="h-12"></img>
           </div>
 
-          <div className="custom-txt-title mx-4 px-12 border-2">Nike</div>
+          <div className="custom-txt-title  px-6  ">Nike</div>
 
-          <div className="mx-4 px-12 ">
+          <div className="mx-4 px-12 border-l ">
             <p className="custom-txt-title text-sm">Wallet Address:</p>
             <p className="custom-txt-normal text-sm">
               SP3DQ1EKJ9AD8FBHY5VP1CZ8Y608YJKVKT37E82B0
@@ -82,7 +82,7 @@ export default function Index() {
           </div>
         </div>
 
-        <div className="border-2 flex flex-wrap">
+        <div className="flex flex-wrap custom-bg-offwhite py-2">
           <button class="bg-black flex flex-wrap mx-4 hover:bg-blue-700 text-white font-bold py-1 px-12 border-2 rounded-lg custom-txt-title text-lg custom-bg-lightblue justify-center">
             <div>Basic Information</div>
           </button>
@@ -96,9 +96,9 @@ export default function Index() {
           {/* <hr className="w-full border-gray-300 border-4"></hr> */}
         </div>
 
-        <div className="border-2 pr-12">
-          <div className="flex flex-wrap border-2">
-            <div className="border-2 mx-4">
+        <div className=" pr-12 custom-bg-offwhite">
+          <div className="flex flex-wrap ">
+            <div className=" mx-4">
               <p className="mt-4">
                 <span className="mr-1 custom-txt-normal-mitr">
                   Registered Name:
@@ -126,32 +126,32 @@ export default function Index() {
               </p>
             </div>
 
-            <div className="border-4 border-dashed border-blueGray-600 ml-auto mr-8 p-16">
+            <div className="border-4 border-dashed border-blueGray-600 ml-auto my-4 mr-8 p-16 bg-white">
               <img src="/img/heylayer-logo.png" class="h-12 "></img>
             </div>
           </div>
+        </div>
 
-          <div className="flex flex-wrap border-2">
-            <div className="ml-auto border-2 flex">
-              <button class="custom-bg-red flex ml-auto hover:bg-blue-700 mb-4 text-white w-2/12 font-bold  px-12 rounded justify-center">
-                <div>Decline</div>
-              </button>
+        <div className="flex flex-wrap  bg-white">
+          <div className="ml-auto  pt-6 flex">
+            <button class="custom-bg-red flex ml-auto hover:bg-blue-700 mb-4 text-white w-2/12 font-bold  px-12 rounded justify-center">
+              Decline
+            </button>
 
-              <button class="custom-bg-red flex mx-4 mr-8 ml-auto  hover:bg-blue-700 mb-4 text-white w-2/12 font-bold px-12 rounded justify-center">
-                <div>Accept</div>
-              </button>
-            </div>
+            <button class="custom-bg-red flex mr-8 ml-auto  hover:bg-blue-700 mb-4 text-white w-2/12 font-bold px-12 rounded justify-center">
+              Accept
+            </button>
           </div>
         </div>
 
-        <div className="border-2 flex flex-wrap justify-center items-center mt-4 mb-6">
-          <div className="mx-4 px-12 border-2">
+        <div className="border-2 flex flex-wrap justify-center items-center mt-4 custom-bg-offwhite rounded py-2">
+          <div className=" px-6 ">
             <img src="/img/heylayer-logo.png" class="h-12"></img>
           </div>
 
-          <div className="custom-txt-title mx-4 px-12 border-2">Nike</div>
+          <div className="custom-txt-title  px-6  ">Nike</div>
 
-          <div className="mx-4 px-12 ">
+          <div className="mx-4 px-12 border-l ">
             <p className="custom-txt-title text-sm">Wallet Address:</p>
             <p className="custom-txt-normal text-sm">
               SP3DQ1EKJ9AD8FBHY5VP1CZ8Y608YJKVKT37E82B0
@@ -159,18 +159,18 @@ export default function Index() {
           </div>
 
           <div className="mx-4 px-12 ">
-            <i class="fa fa-chevron-down fa-lg"></i>
+            <i class="fa fa-chevron-up fa-lg"></i>
           </div>
         </div>
 
-        <div className="border-2 flex flex-wrap justify-center items-center mt-4 mb-6">
-          <div className="mx-4 px-12 border-2">
+        <div className="border-2 flex flex-wrap justify-center items-center mt-4  py-2 rounded custom-bg-offwhite">
+          <div className=" px-6 ">
             <img src="/img/heylayer-logo.png" class="h-12"></img>
           </div>
 
-          <div className="custom-txt-title mx-4 px-12 border-2">Nike</div>
+          <div className="custom-txt-title  px-6  ">Nike</div>
 
-          <div className="mx-4 px-12 ">
+          <div className="mx-4 px-12 border-l ">
             <p className="custom-txt-title text-sm">Wallet Address:</p>
             <p className="custom-txt-normal text-sm">
               SP3DQ1EKJ9AD8FBHY5VP1CZ8Y608YJKVKT37E82B0
@@ -178,7 +178,7 @@ export default function Index() {
           </div>
 
           <div className="mx-4 px-12 ">
-            <i class="fa fa-chevron-down fa-lg"></i>
+            <i class="fa fa-chevron-up fa-lg"></i>
           </div>
         </div>
 
