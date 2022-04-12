@@ -1397,6 +1397,11 @@ select {
   background-color: rgba(228, 228, 231, var(--tw-bg-opacity));
 }
 
+.active\:bg-pink-600:active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(219, 39, 119, var(--tw-bg-opacity));
+}
+
 .active\:bg-indigo-600:active {
   --tw-bg-opacity: 1;
   background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
@@ -2042,8 +2047,16 @@ select {
   height: 0.5rem;
 }
 
+.h-3 {
+  height: 0.75rem;
+}
+
 .h-5 {
   height: 1.25rem;
+}
+
+.h-6 {
+  height: 1.5rem;
 }
 
 .h-8 {
@@ -2214,6 +2227,22 @@ select {
 
 .m-16 {
   margin: 4rem;
+}
+
+.m-40 {
+  margin: 10rem;
+}
+
+.m-44 {
+  margin: 11rem;
+}
+
+.m-52 {
+  margin: 13rem;
+}
+
+.m-56 {
+  margin: 14rem;
 }
 
 .-m-16 {
@@ -2402,6 +2431,10 @@ select {
   margin-left: -1rem;
 }
 
+.-mt-10 {
+  margin-top: -2.5rem;
+}
+
 .-mt-20 {
   margin-top: -5rem;
 }
@@ -2426,6 +2459,10 @@ select {
   margin-top: -16rem;
 }
 
+.-mb-px {
+  margin-bottom: -1px;
+}
+
 .last\:mr-0:last-child {
   margin-right: 0px;
 }
@@ -2448,6 +2485,10 @@ select {
 
 .max-w-xl {
   max-width: 36rem;
+}
+
+.max-w-3xl {
+  max-width: 48rem;
 }
 
 .max-w-4xl {
@@ -2520,6 +2561,10 @@ select {
 
 .object-scale-down {
   object-fit: scale-down;
+}
+
+.opacity-25 {
+  opacity: 0.25;
 }
 
 .opacity-50 {
@@ -2651,6 +2696,10 @@ select {
   padding: 1.25rem;
 }
 
+.p-6 {
+  padding: 1.5rem;
+}
+
 .p-8 {
   padding: 2rem;
 }
@@ -2706,6 +2755,11 @@ select {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .py-6 {
@@ -2781,6 +2835,14 @@ select {
 
 .pb-2 {
   padding-bottom: 0.5rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
+.pt-3 {
+  padding-top: 0.75rem;
 }
 
 .pl-3 {
@@ -2911,12 +2973,27 @@ select {
   position: sticky;
 }
 
+.inset-0 {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
 .top-0 {
   top: 0px;
 }
 
+.top-4 {
+  top: 1rem;
+}
+
 .right-0 {
   right: 0px;
+}
+
+.right-4 {
+  right: 1rem;
 }
 
 .bottom-0 {
@@ -3211,6 +3288,16 @@ select {
   color: rgba(239, 68, 68, var(--tw-text-opacity));
 }
 
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgba(220, 38, 38, var(--tw-text-opacity));
+}
+
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgba(161, 161, 170, var(--tw-text-opacity));
+}
+
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgba(113, 113, 122, var(--tw-text-opacity));
@@ -3501,6 +3588,10 @@ select {
   width: 1.25rem;
 }
 
+.w-6 {
+  width: 1.5rem;
+}
+
 .w-8 {
   width: 2rem;
 }
@@ -3533,10 +3624,13 @@ select {
   width: 8.333333%;
 }
 
+<<<<<<< HEAD
 .w-3\/12 {
   width: 25%;
 }
 
+=======
+>>>>>>> authentication
 .w-6\/12 {
   width: 50%;
 }
@@ -3563,6 +3657,10 @@ select {
 
 .z-10 {
   z-index: 10;
+}
+
+.z-30 {
+  z-index: 30;
 }
 
 .z-40 {
@@ -4139,3 +4237,5 @@ select {
 
 @media (min-width: 1536px) {
 }
+
+

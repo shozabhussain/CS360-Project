@@ -54,10 +54,6 @@
     font-family: "Mitr";
 }
 
-custom-bg-dashboard{
-    background: #828282;
-}
-
 .custom-a-blue{
     color: #053BA6;
     text-decoration: underline;
@@ -76,3 +72,16 @@ custom-bg-dashboard{
     font-weight:600;
     font-family: "Mitr";
 }
+
+/* Google Signin Button */
+
+  span.icon {
+    background: url('../public/img/google-logo.png') transparent 50% no-repeat;
+    background-size: 80%;
+    display: inline-block;
+    vertical-align: middle;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+  }
+  

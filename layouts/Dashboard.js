@@ -1,5 +1,7 @@
 import React from "react";
 
+import UserMenuDropdown from "components/Dropdowns/usermenudropdown";
+
 // components
 
 // import AdminNavbar from "components/Navbars/AdminNavbar.js";
@@ -13,9 +15,9 @@ export default function Admin({ children }) {
       {/* <div className="bg-black top-0 right-0 fixed w-full h-full z-50"></div> */}
       <Sidebar />
       <div className="relative md:ml-64 bg-black bg-[url('/img/dashboardbg.png')] bg-auto">
-        {/* <AdminNavbar /> */}
-        {/* Header */}
-        {/* <HeaderStats /> */}
+        {/* <Sidebar /> */}
+        <UserMenuDropdown className=" z-50 top-0 right-0 fixed" />
+
         <div className="px-4  mx-auto w-full -m-24">
           {children}
           {/* <FooterAdmin /> */}

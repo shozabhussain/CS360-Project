@@ -26,12 +26,7 @@ export default function Sidebar() {
               href="#pablo"
               className="inline-block p-8 px-8 mr-8 text-right text-sm md:block md:pb-2 custom-txt-title whitespace-nowrap"
             >
-                <i
-                  className={
-                    "fas fa-tv mr-2 text-sm "
-                  }
-                ></i>{" "}
-              Mint it
+              <i className={"fas fa-tv mr-2 text-sm "}></i> Mint it
             </a>
           </Link>
           {/* User */}
@@ -39,9 +34,7 @@ export default function Sidebar() {
             <li className="relative inline-block">
               {/* <NotificationDropdown /> */}
             </li>
-            <li className="relative inline-block">
-              {/* <UserDropdown /> */}
-            </li>
+            <li className="relative inline-block">{/* <UserDropdown /> */}</li>
           </ul>
           {/* Collapse */}
           <div
@@ -93,10 +86,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Pending Proposals
@@ -109,10 +102,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Approved Proposals
@@ -125,10 +118,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Rejected Proposals
@@ -141,10 +134,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Report/Complains
@@ -157,10 +150,10 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     Blacklisted Accounts
@@ -173,19 +166,17 @@ export default function Sidebar() {
                   <a
                     href="#pablo"
                     className={
-                      "text-sm py-3 font-bold block custom-txt-title "+
+                      "text-sm py-3 font-bold block custom-txt-title " +
                       (router.pathname.indexOf("/admin/dashboard") !== -1
-                      ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
-                      : "text-custom-bg-darkblue hover:text-blueGray-500")
+                        ? "text-custom-bg-darkblue hover:custom-bg-darkblue"
+                        : "text-custom-bg-darkblue hover:text-blueGray-500")
                     }
                   >
                     How does it work?
                   </a>
                 </Link>
               </li>
-
             </ul>
-
           </div>
         </div>
       </nav>

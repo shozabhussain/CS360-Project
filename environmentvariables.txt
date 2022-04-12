@@ -1,0 +1,9 @@
+// For Team - Collaboration
+
+NEXT_PUBLIC_FIREBASE_apiKey = "AIzaSyAODFeueMWHDJ9mi4K-A03uETqAA0gAE1Q"
+NEXT_PUBLIC_FIREBASE_authDomain= "mint-it-b5b68.firebaseapp.com"
+NEXT_PUBLIC_FIREBASE_projectId= "mint-it-b5b68"
+NEXT_PUBLIC_FIREBASE_storageBucket= "mint-it-b5b68.appspot.com"
+NEXT_PUBLIC_FIREBASE_messagingSenderId= "142791700405"
+NEXT_PUBLIC_FIREBASE_appId= "1:142791700405:web:e41fbd74c0ad67f5de33fc"
+NEXT_PUBLIC_FIREBASE_databaseURL="https://mint-it-b5b68.firebaseio.com"
