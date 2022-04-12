@@ -7,7 +7,8 @@ import {
 
 import { getAuth } from "firebase/auth";
 
-import { userData } from "components/Auth/authentication";
+import { db } from "utils/firebaseClient";
+import { doc, setDoc } from "firebase/firestore";
 
 const auth = getAuth();
 

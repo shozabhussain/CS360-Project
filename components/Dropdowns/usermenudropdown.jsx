@@ -7,7 +7,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import "firebase/compat/auth";
-import firebaseClient from "utils/firebaseClient";
+import {firebaseClient} from "utils/firebaseClient";
 
 
 const firebaseAuth = getAuth(firebaseClient());

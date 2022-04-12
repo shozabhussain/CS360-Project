@@ -8,7 +8,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { userAcessToken } from "utils/fetchUserDetails";
-import firebaseClient from "utils/firebaseClient";
+import { firebaseClient } from "utils/firebaseClient";
 import { useRouter } from "next/router";
 // Landing Page
 

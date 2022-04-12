@@ -1,7 +1,11 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { getUserDetails } from "utils/authentication";
+import { getAuth } from "firebase/auth";
 import DashboardLayout from "layouts/Dashboard.js";
+
+import { db } from "utils/firebaseClient";
+import { doc, setDoc } from "firebase/firestore";
 import {
   uploadFiles,
   allPromises,
@@ -18,6 +22,7 @@ export default function Index() {
   const [regTrademark, setRegTrademark] = useState("");
   const [llcFile, setLlcFile] = useState();
   const [tradeMarkFile, setTradeMarkFile] = useState();
+  const [officialLogo, setOfficialLogo] = useState();
   const [recentBankStatement, setRecentBankStatement] = useState();
   const [successMessageShow, setSuccessMessageShow] = useState(false);
 
@@ -28,19 +33,18 @@ export default function Index() {
 
 
     console.log("url before", urls)
-    const companyData = {
+    let companyData = {
       companyName: companyName,
       companyStartDate: companyStartDate,
       llcNum: llcNum,
       regTrademark: regTrademark,
-      llcFile: llcFile,
-      tradeMarkFile: tradeMarkFile,
-      recentBankStatement: recentBankStatement,
+     
     };
 
     const prom1 = uploadFiles(llcFile, "LLC");
     const prom2 = uploadFiles(tradeMarkFile, "Trademark");
     const prom3 = uploadFiles(recentBankStatement, "Bank Statement");
+    const prom4 = uploadFiles(officialLogo, "Logo");
 
     const allProm = allPromises();
 
@@ -51,15 +55,39 @@ export default function Index() {
       let urls = {};
       urls = getURLs();
       //console.log(urls)
+      companyData["files"] = urls
 
       setSuccessMessageShow(true);
- 
+      
+      sendDatatoDb(companyData)
       //clearPromises();
     });
   };
 
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const sendDatatoDb = (data) => {
+    const userDataRef = doc(db, "pendingVerificationCases", user.uid);
+				const docData = data
+				setDoc(userDataRef, docData)
+					.then(() => {
+						console.log("Added data entry successfully");
+
+						// Redirect user to dashboard
+						//router.push("/user/dashboard");
+					})
+					.catch((error) => {
+						const errorMessage = error.message;
+						console.log("Error when setting up the document", errorMessage);
+					});
+  }
+  
+
   return (
     <>
+
+
       <section className="pt-48 pb-40 text-white">
         <div className="justify-center text-center flex flex-wrap mt-24">
           <div className="w-full ">
@@ -152,7 +180,7 @@ export default function Index() {
               Upload Files
             </h6>
             <div className="flex flex-wrap">
-              <div className="w-full w-4/12 px-4">
+              <div className="w-full w-3/12 px-4">
                 <div className="relative w-full mb-3">
                   <label
                     className="block uppercase text-warmGray-100 text-xs font-bold mb-2"
@@ -168,7 +196,7 @@ export default function Index() {
                   />
                 </div>
               </div>
-              <div className="w-full w-4/12 px-4">
+              <div className=" w-3/12 px-4">
                 <div className="relative w-full mb-3">
                   <label
                     className="block uppercase text-warmGray-100 text-xs font-bold mb-2"
@@ -184,7 +212,23 @@ export default function Index() {
                   />
                 </div>
               </div>
-              <div className="w-full w-4/12 px-4">
+              <div className=" w-3/12 px-4">
+                <div className="relative w-full mb-3">
+                  <label
+                    className="block uppercase text-warmGray-100 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Official Logo
+                  </label>
+                  <input
+                    required
+                    type="file"
+                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    onChange={(e) => setOfficialLogo(e.target.files[0])}
+                  />
+                </div>
+              </div>
+              <div className=" w-3/12 px-4">
                 <div className="relative w-full mb-3">
                   <label
                     className="block uppercase text-warmGray-100 text-xs font-bold mb-2"
