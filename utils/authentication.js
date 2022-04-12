@@ -45,6 +45,7 @@ const signInGoogle = async () => {
 };
 
 const getUserDetails = () => {
+  console.log(user_data);
   return user_data;
 };
 

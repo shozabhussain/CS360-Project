@@ -10,7 +10,8 @@ import {
   uploadFiles,
   allPromises,
   clearPromises,
-  getURLs
+  getURLs,
+  uploadFilesOnebyOne
 } from "./uploadFiles";
 
 // Landing Page
@@ -26,7 +27,7 @@ export default function Index() {
   const [recentBankStatement, setRecentBankStatement] = useState();
   const [successMessageShow, setSuccessMessageShow] = useState(false);
 
-  const submitData = () => {
+  const submitData = async () => {
     clearPromises();
     let urls = {};
     urls = getURLs();
@@ -41,17 +42,19 @@ export default function Index() {
      
     };
 
-    const prom1 = uploadFiles(llcFile, "LLC");
-    const prom2 = uploadFiles(tradeMarkFile, "Trademark");
-    const prom3 = uploadFiles(recentBankStatement, "Bank Statement");
-    const prom4 = uploadFiles(officialLogo, "Logo");
-
+    uploadFiles(llcFile, "LLC");
+    uploadFiles(tradeMarkFile, "Trademark");
+    uploadFiles(recentBankStatement, "Bank Statement");
+    uploadFiles(officialLogo, "Logo");
+    
+    //console.log("prom1", prom1)
     const allProm = allPromises();
 
    console.log("Promises",allProm)
 
-    Promise.all(allProm).then((fileData) => {
-      //console.log(urls)
+    await Promise.all(allProm).then((f) => {
+      console.log("F: ", f)
+      //uploadFilesOnebyOne(f)
       let urls = {};
       urls = getURLs();
       //console.log(urls)
