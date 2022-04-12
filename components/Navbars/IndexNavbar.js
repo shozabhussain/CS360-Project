@@ -1,8 +1,13 @@
 import React from "react";
 
-export default function Navbar() {
+import LoginSignup from "../Auth/loginSignupPopup"
+
+export default function Navbar(props) {
+  
   return (
-    <nav className="flex bg-blueGray-100 h-16 fixed top-0 z-50 w-full my-4 mx-4 items-center justify-center">
+  
+    
+    <nav className="flex bg-blueGray-100 h-16 fixed top-0 z-30 w-full my-4 mx-4 items-center justify-center">
       <div className="w-1/12">
         <div>Mint It</div>
       </div>
@@ -24,8 +29,10 @@ export default function Navbar() {
         </li>
       </ul>
       <div className="flex w-1/12">
-        <div>Login</div>
+        <LoginSignup />
       </div>
+     
     </nav>
+ 
   );
 }
