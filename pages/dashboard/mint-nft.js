@@ -26,6 +26,10 @@ export default function Index() {
 	const [country, setCountry] = useState();
 	const [gender, setGender] = useState();
 
+	useEffect(() => {
+		storage.listFiles((names) => console.log(names));
+	}, []);
+
 	const handleMintNft = () => {
 		const imageStr = nftImg.toString();
 		const imageBuff = Buffer.from(imageStr);
@@ -69,11 +73,11 @@ export default function Index() {
 					.then(() => {
 						// Successfully placed all the files
 
-						const functionArgs = [standardPrincipalCV(myStxAddress()), stringAsciiCV(tokenUri)];
+						const functionArgs = [standardPrincipalCV(myStxAddress()), bufferCV(resultBuff), stringAsciiCV(tokenUri)];
 
 						const options = {
 							contractAddress: "STWT4MSG1A77TYD4YQ0R9VRWQAV9D1JH0EHK4QCA",
-							contractName: "xenacious-magenta-cod",
+							contractName: "MI-token-final-test-version",
 							functionName: "mint",
 							functionArgs,
 							network: networkType(),
