@@ -7,6 +7,8 @@ import "styles/custom.css";
 
 import PageChange from "components/PageChange/PageChange.js";
 
+import { storage } from "utils/auth-wallet";
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import "styles/custom.css";
@@ -35,6 +37,15 @@ export default class MyApp extends App {
 
 		return { pageProps };
 	}
+<<<<<<< HEAD
+=======
+
+	componentDidMount() {
+		// Connect to Gaia Hub
+		storage.listFiles(() => {});
+	}
+
+>>>>>>> product-page
 	render() {
 		const { Component, pageProps } = this.props;
 
