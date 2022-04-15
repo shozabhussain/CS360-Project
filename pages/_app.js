@@ -37,15 +37,12 @@ export default class MyApp extends App {
 
 		return { pageProps };
 	}
-<<<<<<< HEAD
-=======
 
 	componentDidMount() {
 		// Connect to Gaia Hub
 		storage.listFiles(() => {});
 	}
 
->>>>>>> product-page
 	render() {
 		const { Component, pageProps } = this.props;
 
