@@ -59,6 +59,19 @@
     text-decoration: underline;
 }
 
+.custom-bg-log {
+    background-image: url("../public/img/vue.jpg");
+    /* background-size: cover; */
+}
+.custom-bg-red{
+    background-color: #E00909
+}
+
+.custom-txt-normal-mitr{
+    font-size: 18px;
+    font-weight:600;
+    font-family: "Mitr";
+}
 
 /* Google Signin Button */
 
@@ -71,8 +84,3 @@
     height: 42px;
     padding: 10px;
   }
-  
-.custom-bg-log {
-    background-image: url("../public/img/vue.jpg");
-    /* background-size: cover; */
-}

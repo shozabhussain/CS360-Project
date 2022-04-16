@@ -7,7 +7,7 @@ import { userAuth } from "utils/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
-import firebaseClient from "utils/firebaseClient";
+import {firebaseClient} from "utils/firebaseClient";
 import { walletConnect } from "utils/authentication";
 
 const ConnectWallet = (props) => {

@@ -7,7 +7,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import "firebase/compat/auth";
-import firebaseClient from "utils/firebaseClient";
+import { firebaseClient } from "utils/firebaseClient";
 
 const firebaseAuth = getAuth(firebaseClient());
 const provider = new GoogleAuthProvider();
@@ -29,11 +29,11 @@ const UserMenuDropdown = () => {
 	};
 	return (
 		<>
-			<div className="flex flex-wrap">
-				<div className="w-full sm:w-6/12 md:w-4/12 px-4">
+			<div className="flex">
+				<div className="w-full sm:w-6/12 md:w-4/12 px-4 top-4 right-0 absolute">
 					<div className="relative inline-flex align-middle w-full">
 						<button
-							className=" font-bold right-4 fixed top-4 uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 bg-white active:bg-blueGray-600 ease-linear transition-all duration-150"
+							className=" font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 bg-white active:bg-blueGray-600 ease-linear transition-all duration-150"
 							type="button"
 							ref={btnDropdownRef}
 							onClick={() => {

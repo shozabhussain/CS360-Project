@@ -68,83 +68,39 @@ export default function Index() {
 					</div>
 				</div>
 
-				{/* <div className="fcontainer">
-          <div className="fitem">
-            <div className="fitemSmall font-semibold text-1xl">
-              <h2 className="font-semibold text-1xl mt-6">
-                NFT Image
-              </h2>
-            </div>
-            <div className="font-semibold text-0xl">NFT Name</div>
-            <div className="font-semibold text-0xl">Other Metadata...</div>        
-          </div>
-          <div className="fitem">
-            <div className="fitemSmall font-semibold text-1xl">
-              <h2 className="font-semibold text-1xl mt-6">
-                NFT Image
-              </h2>
-            </div>
-            <div className="font-semibold text-0xl">NFT Name</div>
-            <div className="font-semibold text-0xl">Other Metadata...</div>        
-          </div>
-          <div className="fitem">
-            <div className="fitemSmall font-semibold text-1xl">
-              <h2 className="font-semibold text-1xl mt-6">
-                NFT Image
-              </h2>
-            </div>
-            <div className="font-semibold text-0xl">NFT Name</div>
-            <div className="font-semibold text-0xl">Other Metadata...</div>        
-          </div>
-          <div className="fitem">
-            <div className="fitemSmall font-semibold text-1xl">
-              <h2 className="font-semibold text-1xl mt-6">
-                NFT Image
-              </h2>
-            </div>
-            <div className="font-semibold text-0xl">NFT Name</div>
-            <div className="font-semibold text-0xl">Other Metadata...</div>        
-          </div>
-        </div> */}
+				<div>
+					<div className="flex flex-auto mt-48 custom-txt-mainheading justify-center">NFT COLLECTION</div>
 
-				{/* <div className="fcontainer">
-          <div className="fitem">
-            <div className="fitemSmall font-semibold text-1xl">
-              <h2 className="font-semibold text-1xl mt-6">
-                NFT Image
-              </h2>
-            </div>
-            <div className="font-semibold text-0xl">NFT Name</div>
-            <div className="font-semibold text-0xl">Other Metadata...</div>        
-          </div>
-          <div className="fitem">
-            <div className="fitemSmall font-semibold text-1xl">
-              <h2 className="font-semibold text-1xl mt-6">
-                NFT Image
-              </h2>
-            </div>
-            <div className="font-semibold text-0xl">NFT Name</div>
-            <div className="font-semibold text-0xl">Other Metadata...</div>        
-          </div>
-          <div className="fitem">
-            <div className="fitemSmall font-semibold text-1xl">
-              <h2 className="font-semibold text-1xl mt-6">
-                NFT Image
-              </h2>
-            </div>
-            <div className="font-semibold text-0xl">NFT Name</div>
-            <div className="font-semibold text-0xl">Other Metadata...</div>        
-          </div>
-          <div className="fitem">
-            <div className="fitemSmall font-semibold text-1xl">
-              <h2 className="font-semibold text-1xl mt-6">
-                NFT Image
-              </h2>
-            </div>
-            <div className="font-semibold text-0xl">NFT Name</div>
-            <div className="font-semibold text-0xl">Other Metadata...</div>        
-          </div>
-        </div> */}
+					<div className="flex flex-wrap w-full pl-10">
+						<div className="box-border border-0 w-3/12 mt-12 custom-txt-title custom-bg-offwhite rounded px-4 pt-2 mr-8">
+							<div className="box-border border-0 custom-bg-lightblue rounded-lg p-8 mb-2">
+								<div className="custom-txt-title">nft image</div>
+							</div>
+							<div className="custom-txt-normal text-wrap">NFT name</div>
+						</div>
+
+						<div className="box-border border-0 w-3/12 mt-12 custom-txt-title custom-bg-offwhite rounded px-4 pt-2 mr-8">
+							<div className="box-border border-0 custom-bg-lightblue rounded-lg p-8 mb-2">
+								<div className="custom-txt-title">nft image</div>
+							</div>
+							<div className="custom-txt-normal text-wrap">NFT name</div>
+						</div>
+
+						<div className="box-border border-0 w-3/12 mt-12 custom-txt-title custom-bg-offwhite rounded px-4 pt-2 mr-8">
+							<div className="box-border border-0 custom-bg-lightblue rounded-lg p-8 mb-2">
+								<div className="custom-txt-title">nft image</div>
+							</div>
+							<div className="custom-txt-normal text-wrap w-full">NFT name</div>
+						</div>
+
+						<div className="box-border border-0 w-3/12 mt-12 custom-txt-title custom-bg-offwhite rounded px-4 pt-2 mr-8">
+							<div className="box-border border-0 custom-bg-lightblue rounded-lg p-8 mb-2">
+								<div className="custom-txt-title">nft image</div>
+							</div>
+							<div className="custom-txt-normal text-wrap">NFT name</div>
+						</div>
+					</div>
+				</div>
 			</section>
 		</>
 	);

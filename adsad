@@ -1,0 +1,133 @@
+[33mcommit 09cdedc8b8c42a72f868cd3b083c2523c1cc9786[m[33m ([m[1;36mHEAD -> [m[1;32mverification-page[m[33m)[m
+Merge: 45f1ee7 db92dd7
+Author: ahmedtahir2000 <ahmedtahir2000@gmail.com>
+Date:   Sun Apr 10 16:28:29 2022 +0500
+
+    bg set
+
+[33mcommit db92dd7edbd885f9a5309a6e818c9a8bfc14a8a9[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Sat Apr 9 18:21:10 2022 +0500
+
+    transaction page icon remaining
+
+[33mcommit c551e26cdf8844bef877e5e579995032d4315fc5[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Sat Apr 9 18:12:42 2022 +0500
+
+    transaction page icon remaining
+
+[33mcommit 45f1ee758d3af96410889486ba953c9c8d4a6a90[m[33m ([m[1;31morigin/navbar[m[33m, [m[1;32mnavbar[m[33m)[m
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Sat Apr 9 06:12:30 2022 +0500
+
+    fixed about link
+
+[33mcommit 9fc07776f4135377b4c83d16cabbf61c19be18d3[m
+Merge: a11d2a5 b7971d0
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Sat Apr 9 06:10:56 2022 +0500
+
+    Merge branch 'navbar' of https://github.com/suleman-mahmood/mint-it into navbar
+
+[33mcommit a11d2a558ddf2aeaff7193656fb72ae0772d0022[m
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Sat Apr 9 06:10:36 2022 +0500
+
+    added links to all the navbar pages
+
+[33mcommit ba9143f2fceb925daabf3b2684904ec27ca2ebaf[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Sat Apr 9 05:56:55 2022 +0500
+
+    transaction page in prog
+
+[33mcommit b51174bc9a4c515221fbf4b516eab62aeacc83ac[m[33m ([m[1;31morigin/track-ownership[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Sat Apr 9 05:45:48 2022 +0500
+
+    added the qr integration and fixed some minor ui bugs
+
+[33mcommit a6726b580e7f604c12d0c9dc53b9b00f3f38491d[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Sat Apr 9 04:36:25 2022 +0500
+
+    nft collection page done
+
+[33mcommit 449cb6b72c9cb243c37f3bd2b3d84829c6c77487[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Sat Apr 9 03:20:56 2022 +0500
+
+    manufacturers list page done
+
+[33mcommit 7a3c7ebbba300b765dff3237fc709957c5a20ab7[m
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Sat Apr 9 00:17:05 2022 +0500
+
+    fixed useRouter transition bug
+
+[33mcommit 4b53871b99c6c2185654e2d7c612fc64037972e5[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Fri Apr 8 05:34:08 2022 +0500
+
+    logo and orientation remaining
+
+[33mcommit b7971d05fac849aa6116eab6e5a4ea3b795058ea[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Fri Apr 8 02:05:28 2022 +0500
+
+    logo remaining
+
+[33mcommit 0da52ae38ee9c87eb598227676c09d682111822e[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Thu Apr 7 04:09:05 2022 +0500
+
+    logo remaining
+
+[33mcommit 9e8a913be698ff468582691d1ad545e2ec2b2cea[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Thu Apr 7 00:14:31 2022 +0500
+
+    just started
+
+[33mcommit 21674b54fc7265a2206184b69539149b57c3757e[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Tue Apr 5 22:45:59 2022 +0500
+
+    profile starting
+
+[33mcommit 8d8fc3b5f64a7bb99fe94a79dca1cc0610efc146[m
+Author: shozabhussain <23100174@lums.edu.pk>
+Date:   Tue Apr 5 21:59:10 2022 +0500
+
+    admin and normal navbar done except logo
+
+[33mcommit 996e92d39c951532b5fe397cb2cb292a6e1df3e3[m[33m ([m[1;31morigin/verification-page[m[33m, [m[1;31morigin/user-menu[m[33m, [m[1;31morigin/smart-contracts[m[33m, [m[1;32mmain[m[33m)[m
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Thu Mar 24 23:50:51 2022 +0500
+
+    added dummy pages
+
+[33mcommit 2ef935c939ff6d8a8ce5dc4bdb40d67f67502e71[m
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Thu Mar 24 01:40:11 2022 +0500
+
+    added github commands in readme
+
+[33mcommit 3369de4ac8b00846a44920444c0bb12f04210c58[m
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Thu Mar 24 01:19:38 2022 +0500
+
+    made new pages and moved templates into separate folders
+
+[33mcommit b7ac5f5a06b6d2bfc725f6199bde2092c009925d[m
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Wed Mar 23 21:19:48 2022 +0500
+
+    init
+
+[33mcommit ee1d335c770a37a0f42c7d634efa952c47628875[m
+Author: Suleman Mahmood <sulemanmahmood99@gmail.com>
+Date:   Sat Mar 12 01:46:49 2022 +0500
+
+    Initial commit
