@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import LoginSignup from "components/Auth/loginSignupPopup";
 
 export default function Navbar() {
 	return (
@@ -27,7 +28,7 @@ export default function Navbar() {
 				</li>
 			</ul>
 			<div className="flex w-1/12">
-				<div>Login</div>
+				<LoginSignup />
 			</div>
 		</nav>
 	);
