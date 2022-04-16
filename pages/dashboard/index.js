@@ -10,11 +10,15 @@ import "firebase/compat/auth";
 import { userAcessToken } from "utils/fetchUserDetails";
 import firebaseClient from "utils/firebaseClient";
 import { useRouter } from "next/router";
+import { storage } from "utils/auth-wallet";
 // Landing Page
 
 export default function Index() {
 	const router = useRouter();
 	useEffect(() => {
+		// Load Gaia Hub
+		storage.listFiles(() => {});
+
 		const accessToken = userAcessToken();
 		if (!accessToken) {
 			router.push("/");

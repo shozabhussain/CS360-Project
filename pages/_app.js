@@ -7,7 +7,7 @@ import "styles/custom.css";
 
 import PageChange from "components/PageChange/PageChange.js";
 
-import { storage } from "utils/auth-wallet";
+import { storage, getUserData } from "utils/auth-wallet";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
@@ -39,8 +39,13 @@ export default class MyApp extends App {
 	}
 
 	componentDidMount() {
-		// Connect to Gaia Hub
-		storage.listFiles(() => {});
+		try {
+			getUserData();
+			// Connect to Gaia Hub
+			storage.listFiles(() => {});
+		} catch {
+			console.log("Wallet not connected yet");
+		}
 	}
 
 	render() {
