@@ -92,12 +92,12 @@ export default function Sidebar() {
 
 						<ul className="flex flex-col list-none md:flex-col md:min-w-full">
 							<li className="items-center">
-								<Link href="/admin/dashboard">
+								<Link href="/dashboard/track">
 									<a
 										href="#pablo"
 										className={
 											"text-sm py-3 font-bold block custom-txt-title " +
-											(router.pathname.indexOf("/admin/dashboard") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
+											(router.pathname.indexOf("/dashboard/track") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
 										}
 									>
 										Track
@@ -106,12 +106,12 @@ export default function Sidebar() {
 							</li>
 
 							<li className="items-center">
-								<Link href="/admin/dashboard">
+								<Link href="/dashboard/view-nfts">
 									<a
 										href="#pablo"
 										className={
 											"text-sm py-3 font-bold block custom-txt-title " +
-											(router.pathname.indexOf("/admin/dashboard") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
+											(router.pathname.indexOf("/dashboard/view-nfts") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
 										}
 									>
 										View NFTs
@@ -120,12 +120,12 @@ export default function Sidebar() {
 							</li>
 
 							<li className="items-center">
-								<Link href="/admin/dashboard">
+								<Link href="/dashboard/mint-nft">
 									<a
 										href="#pablo"
 										className={
 											"text-sm py-3 font-bold block custom-txt-title " +
-											(router.pathname.indexOf("/admin/dashboard") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
+											(router.pathname.indexOf("/dashboard/mint-nft") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
 										}
 									>
 										Mint NFTs
@@ -134,12 +134,12 @@ export default function Sidebar() {
 							</li>
 
 							<li className="items-center">
-								<Link href="/admin/dashboard">
+								<Link href="/dashboard/manufacturers-list">
 									<a
 										href="#pablo"
 										className={
 											"text-sm py-3 font-bold block custom-txt-title " +
-											(router.pathname.indexOf("/admin/dashboard") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
+											(router.pathname.indexOf("/dashboard/manufacturers-list") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
 										}
 									>
 										Verified Manufacturers
@@ -148,12 +148,12 @@ export default function Sidebar() {
 							</li>
 
 							<li className="items-center">
-								<Link href="/admin/dashboard">
+								<Link href="/dashboard/transactions">
 									<a
 										href="#pablo"
 										className={
 											"text-sm py-3 font-bold block custom-txt-title " +
-											(router.pathname.indexOf("/admin/dashboard") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
+											(router.pathname.indexOf("/dashboard/transactions") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
 										}
 									>
 										Transactions
@@ -162,12 +162,11 @@ export default function Sidebar() {
 							</li>
 
 							<li className="items-center">
-								<Link href="/admin/dashboard">
+								<Link href="/">
 									<a
 										href="#pablo"
 										className={
-											"text-sm py-3 font-bold block custom-txt-title " +
-											(router.pathname.indexOf("/admin/dashboard") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
+											"text-sm py-3 font-bold block custom-txt-title " + (router.pathname.indexOf("/") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
 										}
 									>
 										About
@@ -176,12 +175,11 @@ export default function Sidebar() {
 							</li>
 
 							<li className="items-center">
-								<Link href="/admin/dashboard">
+								<Link href="/">
 									<a
 										href="#pablo"
 										className={
-											"text-sm py-3 font-bold block custom-txt-title " +
-											(router.pathname.indexOf("/admin/dashboard") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
+											"text-sm py-3 font-bold block custom-txt-title " + (router.pathname.indexOf("/") !== -1 ? "text-custom-bg-darkblue hover:custom-bg-darkblue" : "text-custom-bg-darkblue hover:text-blueGray-500")
 										}
 									>
 										Contact
@@ -190,12 +188,11 @@ export default function Sidebar() {
 							</li>
 
 							<li className="items-center">
-								<Link href="/admin/dashboard">
+								<Link href="/">
 									<a
 										href="#pablo"
 										className={
-											"text-sm py-3 font-bold block custom-txt-title " +
-											(router.pathname.indexOf("/admin/dashboard") !== -1 ? "text-custom-bg-darkblue hover:text-blueGray-500" : "text-custom-bg-darkblue hover:text-blueGray-500")
+											"text-sm py-3 font-bold block custom-txt-title " + (router.pathname.indexOf("/") !== -1 ? "text-custom-bg-darkblue hover:text-blueGray-500" : "text-custom-bg-darkblue hover:text-blueGray-500")
 										}
 									>
 										How does it work?
