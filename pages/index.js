@@ -28,14 +28,10 @@ export default function Index() {
 
 	return (
 		<>
-			<section className="mt-48">
-				<div className="justify-center text-center flex flex-wrap mt-24">
+			<section className="">
+				<div className="justify-center text-center flex flex-wrap">
 					<div className="w-full md:w-6/12 px-12 md:px-4">
-						{/* <button className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
-							Check open
-						</button> */}
-
-						<p className="text-lg leading-relaxed mt-4 mb-4 text-blueGray-500">
+						<p className="mt-48 text-lg leading-relaxed mb-4 text-blueGray-500">
 							Mint it (M.I) is a web application that aims to bring transparency and fraud resistance to the supply chain of authentic products. M.I merges the concept of Blockchain and Supply Chain together which possesses
 							the potential to benefit everyone involved in the trading of goods.
 						</p>
