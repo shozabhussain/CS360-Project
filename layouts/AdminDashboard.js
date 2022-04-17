@@ -1,6 +1,6 @@
 import React from "react";
 
-import UserMenuDropdown from "components/Dropdowns/usermenudropdown";
+import UserMenuDropdown from "components/Dropdowns/usermenudropdownAdmin";
 
 // components
 
