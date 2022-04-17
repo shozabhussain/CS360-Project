@@ -1,11 +1,31 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import DashboardLayout from "layouts/Dashboard.js";
 import Link from "next/link";
 import { authenticate } from "utils/auth-wallet";
 import { myStxAddress } from "utils/auth-wallet";
 import { getUserData } from "utils/auth-wallet";
+
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
+
+import { getAuth, updateProfile } from "firebase/auth";
+
+import Swal from "sweetalert2";
+
+import {
+  doc,
+  collection,
+  getDoc,
+  getDocs,
+  query,
+  where,
+  updateDoc,
+} from "firebase/firestore";
+
+import { db } from "utils/firebaseClient";
 
 // Landing Page
 
@@ -57,7 +77,42 @@ const walletButton = () => {
   }
 };
 
+const auth = getAuth();
+
 export default function Index() {
+  const [userEmail, setUserEmail] = React.useState("");
+  const [userName, setUserName] = React.useState("");
+  const [uid, setUid] = useState("");
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      let data = {};
+      const docRef = doc(db, "users", user.uid);
+      getDoc(docRef).then((docSnap) => {
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+          data = docSnap.data();
+          setUserEmail(data.email);
+          setUserName(data.userName);
+          setUid(user.uid);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      });
+    });
+  }, []);
+
+  const editProfile = (index) => {
+    const docRef = doc(db, "users", uid);
+
+    updateDoc(docRef, {
+      userName: userName,
+    }).then(() => {
+      Swal.fire("Details edited");
+    });
+  };
+
   return (
     <div className="justify-center items-center">
       <div className="justify-center text-center w-full flex flex-wrap mt-16 custom-txt-title pt-24 text-white">
@@ -70,31 +125,34 @@ export default function Index() {
             className="block custom-txt-title tracking-wide text-white text-xs font-bold mb-2"
             for="grid-first-name"
           >
-            Display Name:
+            User Name:
           </label>
 
           <input
-            className="appearance-none block w-full bg-gray-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            className="appearance-none block w-full bg-gray-200 text-black border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
-            placeholder="DEMO MINT IT"
+            placeholder="demo_mint_it"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
           ></input>
         </div>
-
         <div className="w-1/12"></div>
+
         <div className="w-3/12">
           <label
             className="block custom-txt-title tracking-wide text-white text-xs font-bold mb-2"
             for="grid-first-name"
           >
-            User Name:
+            User Email:
           </label>
 
           <input
-            className="appearance-none block w-full bg-gray-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            className="appearance-none block w-full bg-gray-200 text-black border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
             placeholder="demo_mint_it"
+            value={userEmail}
           ></input>
         </div>
       </div>
@@ -120,7 +178,9 @@ export default function Index() {
           </p>
         </div>
 
-        <p className="custom-txt-title text-sm ml-2 mr-1 mb-4 text-red-500">Verified</p>
+        <p className="custom-txt-title text-sm ml-2 mr-1 mb-4 text-red-500">
+          Verified
+        </p>
 
         <i className="fa fa-times-circle fa-lg mr-8 mb-4"></i>
 
@@ -149,7 +209,10 @@ export default function Index() {
       </div>
 
       <div className="justify-center my-6 flex">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white custom-txt-title font-bold py-2 px-4 rounded custom-bg-lightblue justify-center">
+        <button
+          onClick={editProfile}
+          className="bg-blue-500 hover:bg-blue-700 text-white custom-txt-title font-bold py-2 px-4 rounded custom-bg-lightblue justify-center"
+        >
           Save Changes
         </button>
       </div>
