@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { createPopper } from "@popperjs/core";
 import { useRouter } from "next/router";
 import { AuthProvider } from "utils/auth";
@@ -13,12 +13,17 @@ import Link from "next/link";
 const firebaseAuth = getAuth(firebaseClient());
 const provider = new GoogleAuthProvider();
 
+
+
 const UserMenuDropdown = () => {
 	// dropdown props
 	const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
 	const btnDropdownRef = React.createRef();
 	const popoverDropdownRef = React.createRef();
+	const [userEmail, setUserEmail] = React.useState("");
 	const router = useRouter();
+	let user = {};
+
 	const openDropdownPopover = () => {
 		createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
 			placement: "top",
@@ -28,6 +33,16 @@ const UserMenuDropdown = () => {
 	const closeDropdownPopover = () => {
 		setDropdownPopoverShow(false);
 	};
+
+	useEffect(() => {
+		firebase.auth().onAuthStateChanged(function (userfetch) {
+		
+			console.log(userfetch)
+			setUserEmail(userfetch.email)
+		});
+	
+	}, [])
+	
 	return (
 		<>
 			<div className="flex">
@@ -43,7 +58,7 @@ const UserMenuDropdown = () => {
 						>
 							<div className="flex w-full justify-center items-center">
 								<img className="rounded-full w-10 mr-3 border-black-100 border-2 border-solid" src="/img/angular.jpg" />
-								<span className="mr-5">Username</span>
+								<span className="mr-5 lowercase">{userEmail}</span>
 								<i className="fas fa-chevron-circle-down  fa-lg justify-end items-center "></i>
 							</div>
 						</button>
