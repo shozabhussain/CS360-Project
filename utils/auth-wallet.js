@@ -41,7 +41,8 @@ export function authenticate() {
       const data = {
         stxAddress: myStxAddress(),
         email: user.email,
-        status:"user"
+        status:"user",
+        userName: user.email
 
       }
       const userDataRef = doc(db, "users", user.uid);
