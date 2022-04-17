@@ -33,7 +33,7 @@ export default function Index() {
   return (
     <>
       <div className="mx-4 mt-48 px-12">
-        <div className="justify-center text-center w-full flex flex-wrap mt-24 custom-txt-title pt-0 ">
+        <div className="justify-center text-center w-full flex flex-wrap mt-24 custom-txt-title pt-0 text-white">
           Verification Request Proposal
         </div>
 

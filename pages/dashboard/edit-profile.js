@@ -10,86 +10,71 @@ import { getUserData } from "utils/auth-wallet";
 // Landing Page
 
 const walletButton = () => {
-	try {
-		getUserData();
-		return (
-			<div>
-			<div className="flex mt-1">
-			<img
-			  src="/img/heylayer-logo.png"
-			  className="h-12 mx-4 mt-5"
-			></img>
+  try {
+    getUserData();
+    return (
+      <div>
+        <div className="flex mt-1">
+          <img src="/img/heylayer-logo.png" className="h-12 mx-4 mt-5"></img>
 
-			<div className="justify-center items-center w-full my-2 ">
-			  <p className=" text-sm  custom-txt-normal">Wallet#1</p>
-			  <p className=" text-lg custom-txt-mainheading ">
-				{myStxAddress()}
-			  </p>
+          <div className="justify-center items-center w-full my-2 ">
+            <p className=" text-sm  custom-txt-normal">Wallet#1</p>
+            <p className=" text-lg custom-txt-mainheading ">{myStxAddress()}</p>
 
-			  <div className=" flex">
-				<i className="fa fa-undo mr-1 fa-sm mt-1"></i>
-				<p className=" text-sm  custom-txt-normal ">
-				  Wallet Synced
-				</p>
-			  </div>
-			</div>
-		  </div>
-		  </div>
-		)
-	} catch {
-		return(
-			<div>
-			<div className="flex mt-1">
-			<img
-			  src="/img/heylayer-logo.png"
-			  className="h-12 mx-4 mt-5"
-			></img>
+            <div className=" flex">
+              <i className="fa fa-undo mr-1 fa-sm mt-1"></i>
+              <p className=" text-sm  custom-txt-normal ">Wallet Synced</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  } catch {
+    return (
+      <div>
+        <div className="flex mt-1">
+          <img src="/img/heylayer-logo.png" className="h-12 mx-4 mt-5"></img>
 
-			<div className="justify-center items-center w-full my-2 ">
-			  <p className=" text-sm  custom-txt-normal">No Information</p>
-			  <p className=" text-lg custom-txt-mainheading ">
-				SP2z......5ZAX
-			  </p>
+          <div className="justify-center items-center w-full my-2 ">
+            <p className=" text-sm  custom-txt-normal">No Information</p>
+            <p className=" text-lg custom-txt-mainheading ">SP2z......5ZAX</p>
 
-			  <div className=" flex">
-				<i className="fa fa-undo mr-1 fa-sm mt-1"></i>
-				<p className=" text-sm  custom-txt-normal ">
-				  Wallet Not Synced
-				</p>
-			  </div>
-			</div>
-		  </div>
+            <div className=" flex">
+              <i className="fa fa-undo mr-1 fa-sm mt-1"></i>
+              <p className=" text-sm  custom-txt-normal ">Wallet Not Synced</p>
+            </div>
+          </div>
+        </div>
 
-		  <button
-			onClick={authenticate}
-			className="bg-black mx-auto flex flex-wrap hover:bg-blue-700 text-white font-bold custom-txt-title text-sm py-0 px-4 mb-2 rounded-lg justify-center"
-		  >
-			Connect Wallet
-		  </button>
-		  </div>
-		)
-
-	}
-}
+        <button
+          onClick={authenticate}
+          className="bg-black mx-auto flex flex-wrap hover:bg-blue-700 text-white font-bold custom-txt-title text-sm py-0 px-4 mb-2 rounded-lg justify-center"
+        >
+          Connect Wallet
+        </button>
+      </div>
+    );
+  }
+};
 
 export default function Index() {
   return (
     <div className="justify-center items-center">
-      <div className="justify-center text-center w-full flex flex-wrap mt-16 custom-txt-title pt-24">
+      <div className="justify-center text-center w-full flex flex-wrap mt-16 custom-txt-title pt-24 text-white">
         Edit Profile
       </div>
 
       <div className="flex flex-wrap w-full justify-center items-center mt-16">
         <div className="w-3/12">
           <label
-            className="block custom-txt-title tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block custom-txt-title tracking-wide text-white text-xs font-bold mb-2"
             for="grid-first-name"
           >
             Display Name:
           </label>
 
           <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            className="appearance-none block w-full bg-gray-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
             placeholder="DEMO MINT IT"
@@ -99,14 +84,14 @@ export default function Index() {
         <div className="w-1/12"></div>
         <div className="w-3/12">
           <label
-            className="block custom-txt-title tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block custom-txt-title tracking-wide text-white text-xs font-bold mb-2"
             for="grid-first-name"
           >
             User Name:
           </label>
 
           <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            className="appearance-none block w-full bg-gray-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
             placeholder="demo_mint_it"
@@ -117,14 +102,14 @@ export default function Index() {
       <div className="flex flex-wrap w-full justify-center items-center mt-12">
         <div className="w-3/12 -ml-4">
           <label
-            className="block custom-txt-title tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block custom-txt-title tracking-wide text-white text-xs font-bold mb-2"
             for="grid-first-name"
           >
             Account Status:
           </label>
 
           <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            className="appearance-none block w-full bg-gray-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
             placeholder="Manufacturer"
@@ -135,7 +120,7 @@ export default function Index() {
           </p>
         </div>
 
-        <p className="custom-txt-title text-sm ml-2 mr-1 mb-4">Verified</p>
+        <p className="custom-txt-title text-sm ml-2 mr-1 mb-4 text-red-500">Verified</p>
 
         <i className="fa fa-times-circle fa-lg mr-8 mb-4"></i>
 
@@ -148,7 +133,7 @@ export default function Index() {
 
       <div className="w-6/12 flex justify-center item-center mt-6">
         <label
-          className="block custom-txt-title tracking-wide text-gray-700 text-sm font-bold ml-3"
+          className="block custom-txt-title tracking-wide text-white text-sm font-bold ml-3"
           for="grid-first-name"
         >
           Connected Wallet:
@@ -157,8 +142,8 @@ export default function Index() {
 
       <div className="justify-center items-center flex flex-wrap ">
         <div className="border-0 w-9/12 flex justify-center items-center flex-wrap ">
-          <div className="border-2 rounded-lg mx-4 justify-center items-center mb-6 pr-4">
-			{walletButton()}
+          <div className="border-2 rounded-lg mx-4 justify-center items-center mb-6 pr-4 bg-gray-200">
+            {walletButton()}
           </div>
         </div>
       </div>
