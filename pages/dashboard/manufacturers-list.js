@@ -197,13 +197,13 @@ export default function Index() {
 													</p>
 
 													<p className="mt-4">
-														<a className="mr-1 custom-txt-normal-mitr text-blue-800" href={manu.files[0]}>
+														<a className="mr-1 custom-txt-normal-mitr text-blue-800" href={manu.files[1]}>
 															Trademark
 														</a>
 													</p>
 
 													<p className="mt-4">
-														<a className="mr-1 custom-txt-normal-mitr text-blue-800" href={manu.files[0]}>
+														<a className="mr-1 custom-txt-normal-mitr text-blue-800" href={manu.files[2]}>
 															Bank Statement
 														</a>
 													</p>

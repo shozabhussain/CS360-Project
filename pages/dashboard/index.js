@@ -28,7 +28,8 @@ export default function Index() {
 				router.push("/connect-wallet");
 			}
 		} else {
-			router.push("/");
+			console.log("token not found");
+			// router.push("/");
 		}
 	}, []);
 	const { user } = userAuth();

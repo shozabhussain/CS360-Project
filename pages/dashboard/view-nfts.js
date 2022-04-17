@@ -3,10 +3,14 @@ import React, { useEffect, useState } from "react";
 
 import DashboardLayout from "layouts/Dashboard.js";
 import { myStxAddress } from "utils/auth-wallet";
-import { cvToJSON, cvToString, cvToValue } from "@stacks/transactions";
+import appCallReadOnlyFunction from "utils/callReadOnlyFunctionStacks";
+import { uintCV } from "@stacks/transactions";
+import router from "next/router";
 
 export default function Index() {
 	const [nfts, setNfts] = useState([]);
+	const [nftIds, setNftIds] = useState([]);
+	const [imgs, setImgs] = useState([]);
 
 	useEffect(() => {
 		const stxAddress = myStxAddress();
@@ -22,8 +26,14 @@ export default function Index() {
 						if (nft.asset_identifier === contractIdentifier) return nft;
 					});
 
+					let ids = [];
+					myNfts.forEach((element) => {
+						ids.push(parseInt(element.value.hex.slice(4)));
+					});
+
+					setNftIds(ids);
 					setNfts(myNfts);
-					console.log(myNfts);
+					fetchImages(ids);
 				});
 			})
 			.catch((e) => {
@@ -31,7 +41,42 @@ export default function Index() {
 			});
 	}, []);
 
-	const loadNftImages = () => {};
+	const fetchImages = (ids) => {
+		const promiseList = [];
+		ids.forEach((elem) => {
+			promiseList.push(loadNftData(elem));
+		});
+
+		Promise.all(promiseList).then((imageUrls) => {
+			setImgs(imageUrls);
+		});
+	};
+
+	const loadNftData = (myNftId) => {
+		return new Promise((resolve, reject) => {
+			appCallReadOnlyFunction({
+				contractAddress: "STWT4MSG1A77TYD4YQ0R9VRWQAV9D1JH0EHK4QCA",
+				contractName: "MI-token-final-test-version",
+				functionName: "get-token-uri",
+				functionArgs: [uintCV(myNftId)],
+			})
+				.then((value) => {
+					const tokenUri = value.value.value.value;
+					const imageUrl = "https://gaia.blockstack.org/hub/" + tokenUri + ".jpg";
+					resolve(imageUrl);
+				})
+				.catch((e) => {
+					console.log(e.message);
+				});
+		});
+	};
+
+	const handleNftInfoDisplay = (id) => {
+		router.push({
+			pathname: "/dashboard/single-nft",
+			query: { id: id },
+		});
+	};
 
 	return (
 		<>
@@ -42,12 +87,14 @@ export default function Index() {
 					<div className="flex flex-wrap w-full pl-10">
 						{nfts.map((nft, i) => {
 							return (
-								<div key={i} className="box-border flex flex-col border-0 w-3/12 mt-12 custom-txt-title custom-bg-offwhite rounded px-4 pt-2 mr-8">
+								<div onClick={() => handleNftInfoDisplay(nftIds[i])} key={i} className="box-border flex w-full border-0 mt-12 custom-txt-title custom-bg-offwhite rounded px-4 pt-2 mr-8">
 									<div className="box-border border-0 custom-bg-lightblue rounded-lg p-8 mb-2">
-										<div className="custom-txt-title">nft image</div>
+										<img src={imgs[i]} className="custom-txt-title"></img>
 									</div>
-									<div className="custom-txt-normal text-wrap">Hex Value: {nft.value.hex}</div>
-									<div className="custom-txt-normal text-wrap">Transaction ID: {nft.tx_id}</div>
+									<div className="flex flex-col ml-10">
+										<div className="custom-txt-normal text-wrap mb-2">NFT Id: {nftIds[i]}</div>
+										<div className="custom-txt-normal text-wrap mb-2">Transaction ID: {nft.tx_id}</div>
+									</div>
 								</div>
 							);
 						})}
