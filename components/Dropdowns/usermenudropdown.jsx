@@ -8,6 +8,7 @@ import "firebase/compat/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import "firebase/compat/auth";
 import { firebaseClient } from "utils/firebaseClient";
+import Link from "next/link";
 
 const firebaseAuth = getAuth(firebaseClient());
 const provider = new GoogleAuthProvider();
@@ -47,29 +48,17 @@ const UserMenuDropdown = () => {
 							</div>
 						</button>
 						<div ref={popoverDropdownRef} className={(dropdownPopoverShow ? "block " : "hidden ") + "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1 min-w-48"}>
-							<a
-								href=""
-								className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:bg-gray-100 active:bg-yellow-500 active:text-black"
-								onClick={(e) => {
-									e.preventDefault();
-									console.log("Clicked my Profile");
-								}}
-							>
-								<div className="flex w-full text-base">
-									<div className=" w-1/5">
-										<i className="fa fa-user"></i>
+							<Link href="/dashboard/edit-profile">
+								<a className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:bg-gray-100 active:bg-yellow-500 active:text-black">
+									<div className="flex w-full text-base">
+										<div className=" w-1/5">
+											<i className="fa fa-user"></i>
+										</div>
+										<div className=" w-4/5">My Profile</div>
 									</div>
-									<div className=" w-4/5">My Profile</div>
-								</div>
-							</a>
-							<a
-								href=""
-								className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:bg-gray-100 active:bg-yellow-500 active:text-black"
-								onClick={(e) => {
-									e.preventDefault();
-									console.log("Clicked my Profile");
-								}}
-							>
+								</a>
+							</Link>
+							<a className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:bg-gray-100 active:bg-yellow-500 active:text-black">
 								<div className="flex w-full text-base">
 									<div className=" w-1/5">
 										<i className="fa fa-cog"></i>
