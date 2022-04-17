@@ -10,6 +10,9 @@ import { openContractCall } from "@stacks/connect";
 import { standardPrincipalCV, stringAsciiCV, bufferCV } from "@stacks/transactions";
 
 import { v4 as uuidv4 } from "uuid";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "utils/firebaseClient";
+import Swal from "sweetalert2";
 
 // Landing Page
 
@@ -85,6 +88,15 @@ export default function Index() {
 								console.log("Stacks Transaction:", data.stacksTransaction);
 								console.log("Transaction ID:", data.txId);
 								console.log("Raw transaction:", data.txRaw);
+
+								// Add this transaction to the database
+								addDoc(collection(db, "transactions"), {
+									txId: data.txId,
+									txRaw: data.txRaw,
+									stxAddress: myStxAddress(),
+								}).then(() => {
+									Swal.fire("Transaction Successfully added to mempool");
+								});
 							},
 						};
 
@@ -119,12 +131,9 @@ export default function Index() {
 						<h2 className="font-semibold text-4xl pb-16 mt-12 text-white">MINT NFT PRODUCT</h2>
 					</div>
 					<div className="fcontainer  pb-6">
-						<img className="fitemLarge font-semibold text-1xl" src={imgPreview}>
-						</img>
+						<img className="fitemLarge font-semibold text-1xl" src={imgPreview}></img>
 
-						<h1 className="-ml-64 mr-60 font-bold text-black">
-							Image Preview
-						</h1>
+						<h1 className="-ml-64 mr-60 font-bold text-black">Image Preview</h1>
 						{/* <div>
 							<div className="fitemMedium item3 font-semibold text-1xl">Click to Upload an Image</div>
 							<h2 className="font-semibold text-2xl">Product Name:</h2>
@@ -141,13 +150,9 @@ export default function Index() {
 									Click to Upload an Image
 								</label> */}
 								<div className="fitemMedium item3 font-semibold text-1xl -mb-4">
-									<h2 className="mt-4">
-										Click to
-									</h2>
+									<h2 className="mt-4">Click to</h2>
 
-									<h1 className="font-bold text-2xl">
-										Upload an Image
-									</h1>
+									<h1 className="font-bold text-2xl">Upload an Image</h1>
 								</div>
 								<input
 									type="file"
@@ -245,7 +250,7 @@ export default function Index() {
 							<h2 className="fitemTitle font-semibold text-2xl">Gender:</h2>
 							<div className="fitemSmall item1 mt-5 font-semibold text-1xl"> Select Gender</div>
 						</div> */}
-					
+
 						<div className="relative w-full mb-3">
 							<label className="block  text-white text-s font-bold mb-2" htmlFor="grid-password">
 								Size:
@@ -284,7 +289,7 @@ export default function Index() {
 							/>
 						</div>
 					</div>
-					
+
 					<div className="fcontainerSecond text-left p-x-2">
 						<div className="relative w-full mb-3">
 							<label className="block  text-white text-s font-bold mb-2" htmlFor="grid-password">
@@ -298,7 +303,7 @@ export default function Index() {
 								onChange={(e) => setCountry(e.target.value)}
 							/>
 						</div>
-						
+
 						<div className="relative w-full mb-3">
 							<label className="block  text-white text-s font-bold mb-2" htmlFor="grid-password">
 								Gender:
@@ -311,7 +316,6 @@ export default function Index() {
 								onChange={(e) => setGender(e.target.value)}
 							/>
 						</div>
-						
 					</div>
 
 					<div></div>
