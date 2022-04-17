@@ -5,6 +5,7 @@ import LoginSignup from "components/Auth/loginSignupPopup";
 export default function Navbar() {
   return (
     <nav className="flex text-white h-16 fixed top-0 z-50 w-full my-4 mx-4 items-center justify-center">
+      <img src="/img/navBarLogo.png" className="h-16 mx-4"></img>
       <div className="w-1/12 hover:text-blueGray-500">
         <div>
           <Link href="/">Mint It</Link>
