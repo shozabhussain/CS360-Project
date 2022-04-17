@@ -35,7 +35,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="pb-40">
+      <section className="">
         <div className="justify-center text-center flex flex-wrap mt-24">
           <div className="w-full md:w-6/12 px-12 md:px-4">
             <h2 className="font-semibold text-4xl text-white">

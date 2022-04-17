@@ -241,10 +241,10 @@ const AuthPopBox = (props) => {
             <div className="relative p-6 flex-auto">
               <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                 {/* Login Form */}
-                <p className="custom-txt-title">
+                <p className="custom-txt-title text-black">
                   Enter your email and password below:
                 </p>
-                <p className="custom-txt-normal">
+                <p className="custom-txt-normal text-black">
                   To continue logging into the account
                 </p>
                 {loginerrorShow ? (
@@ -281,7 +281,7 @@ const AuthPopBox = (props) => {
                     />
                   </div>
 
-                  <p className="custom-txt-sml">
+                  <p className="custom-txt-sml text-black">
                     By Signing in you agree to our{" "}
                     <a href="#" className="custom-a-blue">
                       Terms & Conditions.
@@ -305,10 +305,12 @@ const AuthPopBox = (props) => {
               </div>
               <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                 {/* Sign Up Form */}
-                <p className="custom-txt-title">
+                <p className="custom-txt-title text-black">
                   Enter your email and password below:
                 </p>
-                <p className="custom-txt-normal">OWN . Transfer . Verify</p>
+                <p className="custom-txt-normal text-black">
+                  OWN . Transfer . Verify
+                </p>
                 {/* {signUperrorShow ? <div className="bg-red-400 text-white p-2">Error! {signUperror}</div> : null} */}
                 {signUperrorShow ? (
                   <div className=" bg-red-600 text-white p-2 mt-2 mb-2 rounded-lg flex w-full justify-center items-center">
@@ -368,7 +370,8 @@ const AuthPopBox = (props) => {
                         setsignUpErrorShow(false);
                       }}
                     />
-                    {signupPasswordFirst != signupPasswordSec ? (
+                    {signupPasswordFirst != signupPasswordSec ||
+                    signupPasswordFirst == "" ? (
                       <p className="custom-txt-sml text-red-600">
                         Password{" "}
                         <span className="font-bold underline">NOT</span> Match!
@@ -381,7 +384,7 @@ const AuthPopBox = (props) => {
                     )}
                   </div>
 
-                  <p className="custom-txt-sml">
+                  <p className="custom-txt-sml text-black">
                     By Signing up you agree to our{" "}
                     <a href="#" className="custom-a-blue">
                       Terms & Conditions.
@@ -401,7 +404,7 @@ const AuthPopBox = (props) => {
             {/*footer*/}
             {openTab == 1 ? (
               <div className="p-6 flex-auto -mt-10">
-                <div className="custom-txt-sml text-center">
+                <div className="custom-txt-sml text-center text-black">
                   Not registered account yet?{" "}
                   <a
                     href=""

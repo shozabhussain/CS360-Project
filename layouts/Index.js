@@ -10,9 +10,6 @@ import AuthPopBox from "components/Auth/authPopBox";
 export default function Auth({ children }) {
   return (
     <>
-      {/* <div className=" max-h-screen">
-
-      </div> */}
       <div className="min-h-screen w-screen bg-black bg-[url('/img/dashboardbg.png')]">
         <IndexNavbar />
         {children}

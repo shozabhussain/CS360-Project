@@ -41,9 +41,9 @@ const ConnectWallet = (props) => {
 								<img src="/img/heylayer-logo.png" className=" mr-auto ml-auto" width="50%" />
 							</div>
 							<div>
-								<p>No Information</p>
-								<span className="text-lg font-bold">Hiro Wallet</span>
-								<p>
+								<p className="text-black">No Information</p>
+								<span className="text-lg font-bold text-black">Hiro Wallet</span>
+								<p className="text-black">
 									<i className="fa fa-undo mr-1"></i>
 									<span>Wallet Not Synced.</span>
 								</p>
@@ -54,8 +54,8 @@ const ConnectWallet = (props) => {
 						<div className="p-6 flex-auto -mt-8 text-center w-full">
 							<button onClick={connectWallet} className=" bg-black text-white rounded-lg w-full font-bold p-2">
 								Connect Wallet
-							</button>	
-							<p>Connect and Get Started.</p>
+							</button>
+							<p className="text-black">Connect and Get Started.</p>
 						</div>
 					</div>
 				</div>
