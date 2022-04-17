@@ -31,3 +31,51 @@
 
 ;; map for all nft uris
 (define-map nft-info { nft-uid: uint} { data-hash: (buff 32), uri: (string-ascii 256)})
+
+;;;;;;;;;;;;;;;; GETTERS ;;;;;;;;;;;;;;;;;;;;;;;
+
+(define-read-only (get-last-token-id)
+    (ok (var-get last-token-id))
+)
+
+
+(define-read-only (get-token-uri (token-id uint))
+    (ok (get uri (map-get? nft-info (tuple (nft-uid token-id)))))
+)
+
+(define-read-only (get-token-hash (token-id uint))
+    (ok (get data-hash (map-get? nft-info (tuple (nft-uid token-id)))))
+)
+
+
+(define-read-only (get-owner (token-id uint))
+    (ok (nft-get-owner? MI-token token-id))
+)
+
+;;;;;;;;;;;;;;;;;;; SETTERS ;;;;;;;;;;;;;;;;;;;;
+
+;; function to add admins
+(define-public (add-admins (new-admin principal))
+  (begin
+    ;;only the deployer of the contract can add new admins 
+    (asserts! (is-eq contract-owner tx-sender) err-not-contract-owner)
+    (ok (map-set admin-access {admin-principal: new-admin} {is-authorised: true}))
+  )
+)
+
+;; function to add manufacturer
+(define-public (add-manufacturer (new-man principal))
+  (begin
+    ;; (asserts! (is-admin tx-sender) (err {kind: "caller-not-admin", code: u300}))
+    (asserts! (is-admin tx-sender) err-caller-not-admin)
+    (ok (map-set user-access { user-principal: new-man } {is-manufacturer: true}))  
+  )
+)
+
+;; function to add normal user (not manufacturer)
+(define-public (add-user (new-user principal))
+  (begin
+    (asserts! (is-admin tx-sender) err-caller-not-admin)
+    (ok (map-set user-access { user-principal: new-user } {is-manufacturer: false}))  
+  )
+)
