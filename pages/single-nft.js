@@ -8,7 +8,9 @@ import { standardPrincipalCV, uintCV } from "@stacks/transactions";
 import { networkType, myStxAddress } from "utils/auth-wallet";
 import { openContractCall } from "@stacks/connect";
 
-import IndexLayout from "layouts/Index.js";
+import DashboardLayout from "layouts/Index";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { db } from "utils/firebaseClient";
 
 export default function Index() {
 	const router = useRouter();
@@ -17,26 +19,26 @@ export default function Index() {
 	const [nftData, setNftData] = useState();
 
 	useEffect(() => {
+		let myNftId = parseInt(router.query.id);
+
+		if (myNftId < 0) {
+			myNftId *= -1;
+		}
+
 		setNftId(parseInt(router.query.id));
 
-		loadNftData();
+		loadNftData(myNftId);
 	}, []);
 
-	const loadNftData = () => {
+	const loadNftData = (myNftId) => {
 		appCallReadOnlyFunction({
 			contractAddress: "STWT4MSG1A77TYD4YQ0R9VRWQAV9D1JH0EHK4QCA",
 			contractName: "MI-token-final-test-version",
 			functionName: "get-token-uri",
-			functionArgs: [
-				// enter all your function arguments here but cast them to CV first
-				uintCV(nftId),
-			],
+			functionArgs: [uintCV(myNftId)],
 		})
 			.then((value) => {
-				console.log(value);
-
-				// TODO: Set token uri from here
-				const tokenUri = "18RZ9bBfkNgvZaUVGaxHFWCzRoRh5Vo4Ef/a9c29509-9c51-4153-821b-c453e";
+				const tokenUri = value.value.value.value;
 				loadDataFromUri(tokenUri);
 			})
 			.catch((e) => {
@@ -66,9 +68,55 @@ export default function Index() {
 			});
 	};
 
+	const handleTransferNft = () => {
+		Swal.fire({
+			title: "Input STX address of the recipient",
+			input: "text",
+			inputLabel: "STX address",
+			inputPlaceholder: "STASBDKJASHHDU545ASJDBJASBD548ZADYWGBSAJB",
+		}).then((data) => {
+			const stxAddress = data.value;
+
+			transferNft(stxAddress);
+		});
+	};
+
+	const transferNft = (stxAddress) => {
+		// const functionArgs = [uintCV(nftId), standardPrincipalCV(myStxAddress()), standardPrincipalCV(stxAddress)];
+		const functionArgs = [standardPrincipalCV(myStxAddress()), standardPrincipalCV(stxAddress)];
+
+		const options = {
+			contractAddress: "STWT4MSG1A77TYD4YQ0R9VRWQAV9D1JH0EHK4QCA",
+			contractName: "MI-token-final-test-version",
+			functionName: "transfer",
+			functionArgs,
+			network: networkType(),
+			appDetails: {
+				name: "Mint It",
+				icon: window.location.origin + "/logo.svg",
+			},
+			onFinish: (data) => {
+				console.log("Stacks Transaction:", data.stacksTransaction);
+				console.log("Transaction ID:", data.txId);
+				console.log("Raw transaction:", data.txRaw);
+
+				// Add this transaction to the database
+				addDoc(collection(db, "transactions"), {
+					txId: data.txId,
+					txRaw: data.txRaw,
+					stxAddress: myStxAddress(),
+				}).then(() => {
+					Swal.fire("Transaction Successfully added to mempool");
+				});
+			},
+		};
+
+		openContractCall(options);
+	};
+
 	return (
 		<>
-			<section className="mt-48 pb-40">
+			<section className="pb-40">
 				<div className="fcontainerNew">
 					<div className="fitemLeft">
 						<img src={imageSource} className="font-bold text-3xl mt-48 text-center"></img>
@@ -83,6 +131,14 @@ export default function Index() {
 							<h2 className="font-bold text-1xl mt-2 indent-2">Product Color: {nftData ? nftData.color : null}</h2>
 
 							<h2 className="font-bold text-1xl mt-2 indent-2">Other Metadata...</h2>
+						</div>
+
+						<div className="fitemRightInner">
+							<h2 className="font-bold text-1xl mt-4 indent-2">Product Attributes</h2>
+
+							<button onClick={handleTransferNft} className="fitemButton font-bold text-1xl mt-100">
+								Transfer NFT
+							</button>
 						</div>
 					</div>
 				</div>
@@ -145,4 +201,4 @@ export default function Index() {
 	);
 }
 
-Index.layout = IndexLayout;
+Index.layout = DashboardLayout;

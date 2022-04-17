@@ -108,32 +108,32 @@ export default function Index() {
 								<div className="w-10/12 text-white">
 									<p>
 										<span className="mr-1 custom-txt-normal-mitr">Transaction ID: </span>
-										{trans.tx.tx_id}
+										{trans.tx ? trans.tx.tx_id : null}
 									</p>
 
 									<p>
 										<span className="mr-1 custom-txt-normal-mitr">Sender's Address:</span>
-										{trans.tx.sender_address}
+										{trans.tx ? trans.tx.sender_address : null}
 									</p>
 
 									<p>
 										<span className="mr-1 custom-txt-normal-mitr">Fees:</span>
-										{trans.tx.fee_rate}
+										{trans.tx ? trans.tx.fee_rate : null}
 									</p>
 
 									<p>
 										<span className="mr-1 custom-txt-normal-mitr">Nonce:</span>
-										{trans.tx.nonce}
+										{trans.tx ? trans.tx.nonce : null}
 									</p>
 
 									<p>
 										<span className="mr-1 custom-txt-normal-mitr">Time Initiated:</span>
-										{trans.tx.parent_burn_block_time_iso}
+										{trans.tx ? trans.tx.parent_burn_block_time_iso : null}
 									</p>
 
 									<p>
 										<span className="mr-1 custom-txt-normal-mitr">Status:</span>
-										{trans.tx.tx_status}
+										{trans.tx ? trans.tx.tx_status : null}
 									</p>
 								</div>
 

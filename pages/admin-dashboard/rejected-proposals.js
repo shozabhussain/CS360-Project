@@ -15,9 +15,8 @@ import Swal from "sweetalert2";
 export default function Index() {
 	const [manufacturersList, setManufacturersList] = useState([]);
 	const [toggleInfo, setToggleInfo] = useState([]);
+	const [toggleInfoBasic, setToggleInfoBasic] = useState([]);
 	const [render, setRender] = useState(false);
-
-	const auth = getAuth();
 
 	useEffect(() => {
 		getManufacturers();
@@ -46,6 +45,26 @@ export default function Index() {
 		let temp = toggleInfo;
 		temp[index] = !temp[index];
 		setToggleInfo(temp);
+
+		setTimeout(() => {
+			setRender(!render);
+		}, 100);
+	};
+
+	const handleToggleInfoBasicTrue = (index) => {
+		let temp = toggleInfoBasic;
+		temp[index] = true;
+		setToggleInfoBasic(temp);
+
+		setTimeout(() => {
+			setRender(!render);
+		}, 100);
+	};
+
+	const handleToggleInfoBasicFalse = (index) => {
+		let temp = toggleInfoBasic;
+		temp[index] = false;
+		setToggleInfoBasic(temp);
 
 		setTimeout(() => {
 			setRender(!render);
@@ -103,7 +122,7 @@ export default function Index() {
 						<div key={i}>
 							<div className=" flex flex-wrap justify-center items-center mt-10 custom-bg-yellow py-2 rounded">
 								<div className=" px-6 ">
-									<img src="/img/heylayer-logo.png" className="h-12"></img>
+									<img src={manu.files[3]} className="h-12"></img>
 								</div>
 
 								<div className="custom-txt-title  px-6  ">{manu.companyName}</div>
@@ -121,46 +140,81 @@ export default function Index() {
 							{toggleInfo[i] ? (
 								<div>
 									<div className="flex flex-wrap custom-bg-offwhite py-2">
-										<button className="bg-black flex flex-wrap mx-4 hover:bg-blue-700 text-white font-bold py-1 px-12 border-2 rounded-lg custom-txt-title text-lg custom-bg-lightblue justify-center">
+										<button
+											onClick={() => handleToggleInfoBasicTrue(i)}
+											className="bg-black flex flex-wrap mx-4 hover:bg-blue-700 text-white font-bold py-1 px-12 border-2 rounded-lg custom-txt-title text-lg custom-bg-lightblue justify-center"
+										>
 											<div>Basic Information</div>
 										</button>
 
-										<button className="bg-white  flex flex-wrap mx-4 hover:bg-blue-700 text-black font-bold py-1 px-12 border-2 rounded-lg custom-txt-title text-lg custom-bg-lightblue justify-center">
+										<button
+											onClick={() => handleToggleInfoBasicFalse(i)}
+											className="bg-white  flex flex-wrap mx-4 hover:bg-blue-700 text-black font-bold py-1 px-12 border-2 rounded-lg custom-txt-title text-lg custom-bg-lightblue justify-center"
+										>
 											<div>Documents Submitted</div>
 										</button>
 									</div>
 
 									<div className="border-t">{/* <hr className="w-full border-gray-300 border-4"></hr> */}</div>
 
-									<div className=" pr-12 custom-bg-offwhite">
-										<div className="flex flex-wrap ">
-											<div className=" mx-4">
-												<p className="mt-4">
-													<span className="mr-1 custom-txt-normal-mitr">Registered Name:</span>
-													{manu.companyName}
-												</p>
+									{toggleInfoBasic[i] ? (
+										<div className=" pr-12 custom-bg-offwhite">
+											<div className="flex flex-wrap ">
+												<div className=" mx-4">
+													<p className="mt-4">
+														<span className="mr-1 custom-txt-normal-mitr">Registered Name:</span>
+														{manu.companyName}
+													</p>
 
-												<p className="mt-4">
-													<span className="mr-1 custom-txt-normal-mitr">Comapny started on:</span>
-													{manu.companyStartDate}
-												</p>
+													<p className="mt-4">
+														<span className="mr-1 custom-txt-normal-mitr">Comapny started on:</span>
+														{manu.companyStartDate}
+													</p>
 
-												<p className="mt-4">
-													<span className="mr-1 custom-txt-normal-mitr">LLC Number:</span>
-													{manu.llcNum}
-												</p>
+													<p className="mt-4">
+														<span className="mr-1 custom-txt-normal-mitr">LLC Number:</span>
+														{manu.llcNum}
+													</p>
 
-												<p className="mt-4">
-													<span className="mr-1 custom-txt-normal-mitr">Any registered trademark:</span>
-													{manu.regTrademark}
-												</p>
-											</div>
+													<p className="mt-4">
+														<span className="mr-1 custom-txt-normal-mitr">Any registered trademark:</span>
+														{manu.regTrademark}
+													</p>
+												</div>
 
-											<div className="border-4 border-dashed border-blueGray-600 ml-auto my-4 mr-8 p-16 bg-white">
-												<img src="/img/heylayer-logo.png" className="h-12 "></img>
+												<div className="border-4 border-dashed border-blueGray-600 ml-auto my-4 mr-8 p-16 bg-white">
+													<img src={manu.files[3]} className="h-12 "></img>
+												</div>
 											</div>
 										</div>
-									</div>
+									) : null}
+
+									{!toggleInfoBasic[i] ? (
+										<div className=" pr-12 custom-bg-offwhite">
+											<div className="flex flex-wrap ">
+												<div className=" mx-4">
+													<p className="mt-4">
+														<span className="mr-1 custom-txt-normal-mitr">LLC:</span>
+														<a href={manu.files[0]}>{manu.files[0]}</a>
+													</p>
+
+													<p className="mt-4">
+														<span className="mr-1 custom-txt-normal-mitr">Trademark:</span>
+														<a href={manu.files[0]}>{manu.files[1]}</a>
+													</p>
+
+													<p className="mt-4">
+														<span className="mr-1 custom-txt-normal-mitr">Bank Statement:</span>
+														<a href={manu.files[0]}>{manu.files[2]}</a>
+													</p>
+												</div>
+
+												<div className="border-4 border-dashed border-blueGray-600 ml-auto my-4 mr-8 p-16 bg-white">
+													<img src={manu.files[3]} className="h-12 "></img>
+												</div>
+											</div>
+										</div>
+									) : null}
 								</div>
 							) : null}
 						</div>
