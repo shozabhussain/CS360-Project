@@ -76,7 +76,10 @@ const UserMenuDropdown = () => {
 										.signOut()
 										.then(() => {
 											// Sign-out successful.
-											localStorage.clear();
+
+											localStorage.removeItem("user");
+											localStorage.removeItem("accessToken");
+
 
 											router.push("/");
 										})
