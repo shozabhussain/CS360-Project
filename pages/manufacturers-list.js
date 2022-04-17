@@ -9,8 +9,8 @@ import IndexLayout from "layouts/Index.js";
 export default function Index() {
   return (
     <div>
-      <div className="flex flex-auto mt-32 custom-txt-mainheading justify-center">
-        List of all Verified Manufacturers
+      <div className="flex flex-auto custom-txt-mainheading justify-center text-white">
+        <p className="mt-40">List of all Verified Manufacturers</p>
       </div>
 
       <section className="pb-40">

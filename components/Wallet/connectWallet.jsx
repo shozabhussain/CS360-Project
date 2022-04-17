@@ -54,7 +54,7 @@ const ConnectWallet = (props) => {
 						<div className="p-6 flex-auto -mt-8 text-center w-full">
 							<button onClick={connectWallet} className=" bg-black text-white rounded-lg w-full font-bold p-2">
 								Connect Wallet
-							</button>
+							</button>	
 							<p>Connect and Get Started.</p>
 						</div>
 					</div>
