@@ -6,9 +6,8 @@ import DashboardLayout from "layouts/Dashboard.js";
 
 import { db } from "utils/firebaseClient";
 import { doc, setDoc } from "firebase/firestore";
-import { uploadFiles, allPromises, clearPromises, getURLs, uploadFilesOnebyOne } from "utils/uploadFiles";
-
-// Landing Page
+import { uploadFiles, getURLs } from "utils/uploadFiles";
+import { myStxAddress } from "utils/auth-wallet";
 
 export default function Index() {
 	const [companyName, setCompanyName] = useState("");
@@ -21,17 +20,22 @@ export default function Index() {
 	const [recentBankStatement, setRecentBankStatement] = useState();
 	const [successMessageShow, setSuccessMessageShow] = useState(false);
 
-	const submitData = () => {
-		clearPromises();
-		let urls = {};
-		urls = getURLs();
+	const auth = getAuth();
+	const user = auth.currentUser;
 
-		console.log("url before", urls);
+	const submitData = (e) => {
+		e.preventDefault();
+
+		setSuccessMessageShow(false);
+		let urls = getURLs();
+
 		let companyData = {
 			companyName: companyName,
 			companyStartDate: companyStartDate,
 			llcNum: llcNum,
 			regTrademark: regTrademark,
+			status: "pending",
+			walletAddress: myStxAddress(),
 		};
 
 		const promiseList = [];
@@ -41,42 +45,25 @@ export default function Index() {
 		promiseList.push(uploadFiles(recentBankStatement, "Bank Statement"));
 		promiseList.push(uploadFiles(officialLogo, "Logo"));
 
-		//console.log("prom1", prom1)
-		// const allProm = allPromises();
-
-		// console.log("Promises", allProm);
-
 		Promise.all(promiseList)
 			.then((urls) => {
-				// console.log("F: ", f);
-				//uploadFilesOnebyOne(f)
-				// let urls = {};
-				// urls = getURLs();
-				//console.log(urls)
 				companyData["files"] = urls;
 
-				setSuccessMessageShow(true);
 				sendDatatoDb(companyData);
 				console.log("Successfully uploaded content!!!");
-				//clearPromises();
 			})
 			.catch((errMessage) => {
 				console.log(errMessage);
 			});
 	};
 
-	const auth = getAuth();
-	const user = auth.currentUser;
-
 	const sendDatatoDb = (data) => {
-		const userDataRef = doc(db, "pendingVerificationCases", user.uid);
+		const userDataRef = doc(db, "verification-proposals", user.uid);
 		const docData = data;
 		setDoc(userDataRef, docData)
 			.then(() => {
 				console.log("Added data entry successfully");
-
-				// Redirect user to dashboard
-				//router.push("/user/dashboard");
+				setSuccessMessageShow(true);
 			})
 			.catch((error) => {
 				const errorMessage = error.message;
@@ -91,12 +78,7 @@ export default function Index() {
 					<div className="w-full ">
 						<h2 className="font-semibold text-4xl">Apply for Verification</h2>
 					</div>
-					<form
-						onSubmit={(e) => {
-							e.preventDefault();
-							submitData();
-						}}
-					>
+					<form onSubmit={submitData}>
 						<h6 className="text-blueGray-300 text-sm mt-3 mb-6 font-bold uppercase">User Information</h6>
 						<div className="flex flex-wrap">
 							<div className="w-full lg:w-6/12 px-4">
