@@ -23,5 +23,6 @@ To check for errors in our code, we use the command `clarinet check`
 
 To locally stimulate deployment of contracts along with getting stimulated wallets to test contract functions, we use `clarinet console`
 
-## Deployed Smart Contract (testnet) : STWT4MSG1A77TYD4YQ0R9VRWQAV9D1JH0EHK4QCA.MI-token-final-test-version
+## Deployed Smart Contract (testnet) : 
+STWT4MSG1A77TYD4YQ0R9VRWQAV9D1JH0EHK4QCA.MI-token-final-test-version
 (link : https://explorer.stacks.co/txid/0x913a53c881bd19581e53bd10b9df10491d71b3976168b2529c684cf97a83ed3e?chain=testnet)
