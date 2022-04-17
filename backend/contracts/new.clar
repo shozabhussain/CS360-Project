@@ -6,11 +6,13 @@
 ;; SIP009 NFT trait on mainnet
 ;; (impl-trait 'SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.nft-trait.nft-trait)
 
+
 ;;;;;;;; DATA VARIABLES AND CONSTANTS ;;;;;;;;;;;;;;;;;;;;;
 
 (define-non-fungible-token MI-token uint)
 (define-data-var last-token-id uint u0)
 (define-constant contract-owner tx-sender)
+
 
 ;;;;;;;;;;;; ERRORS ;;;;;;;;;;;;;;;;
 
@@ -32,6 +34,7 @@
 ;; map for all nft uris
 (define-map nft-info { nft-uid: uint} { data-hash: (buff 32), uri: (string-ascii 256)})
 
+
 ;;;;;;;;;;;;;;;; GETTERS ;;;;;;;;;;;;;;;;;;;;;;;
 
 (define-read-only (get-last-token-id)
@@ -51,6 +54,24 @@
 (define-read-only (get-owner (token-id uint))
     (ok (nft-get-owner? MI-token token-id))
 )
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; CHECKING ACCESS RIGHTS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; function to see whether a principal is in the auth-universities map
+
+(define-private (is-admin (incoming-principal principal)) 
+  (is-some (map-get? admin-access (tuple (admin-principal incoming-principal))))
+)
+
+(define-read-only (is-manufacturer (incoming-principal principal)) 
+  (is-eq (get is-manufacturer (map-get? user-access (tuple (user-principal incoming-principal)))) (some true))
+)
+
+(define-read-only (is-user (incoming-principal principal)) 
+  (is-some (map-get? user-access (tuple (user-principal incoming-principal))))
+)
+
 
 ;;;;;;;;;;;;;;;;;;; SETTERS ;;;;;;;;;;;;;;;;;;;;
 
@@ -78,4 +99,21 @@
     (asserts! (is-admin tx-sender) err-caller-not-admin)
     (ok (map-set user-access { user-principal: new-user } {is-manufacturer: false}))  
   )
+)
+
+(define-public (mint (recipient principal) (token-hash (buff 32)) (token-uri (string-ascii 256)))
+    (let
+        (
+            (token-id (+ (var-get last-token-id) u1))
+        )
+        (asserts! (is-eq tx-sender recipient) err-caller-not-owner)
+        (asserts! (or 
+            (is-admin tx-sender)
+            (is-user tx-sender)
+        ) err-caller-not-allowed)
+        (try! (nft-mint? MI-token token-id recipient))
+        (var-set last-token-id token-id)
+        (map-set nft-info { nft-uid: (var-get last-token-id) } {data-hash: token-hash, uri: token-uri})
+        (ok token-id)
+    )
 )
