@@ -117,3 +117,13 @@
         (ok token-id)
     )
 )
+
+(define-public (transfer (token-id uint) (sender principal) (recipient principal))
+    (begin
+        (asserts! (is-eq tx-sender sender) err-caller-not-sender)
+        (nft-transfer? MI-token token-id sender recipient)
+        ;; built in errors : u1 => sender does not own the asset
+        ;; u2 => sender and recipient same
+        ;; u3 asset does not exist????
+    )
+)
