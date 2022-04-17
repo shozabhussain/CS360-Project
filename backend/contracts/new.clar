@@ -101,6 +101,19 @@
   )
 )
 
+
+;;;;;;;;;;;;;;;;;;;;; NFT FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define-public (transfer (token-id uint) (sender principal) (recipient principal))
+    (begin
+        (asserts! (is-eq tx-sender sender) err-caller-not-sender)
+        (nft-transfer? MI-token token-id sender recipient)
+        ;; built in errors : u1 => sender does not own the asset
+        ;; u2 => sender and recipient same
+        ;; u3 asset does not exist????
+    )
+)
+
 (define-public (mint (recipient principal) (token-hash (buff 32)) (token-uri (string-ascii 256)))
     (let
         (
@@ -118,12 +131,7 @@
     )
 )
 
-(define-public (transfer (token-id uint) (sender principal) (recipient principal))
-    (begin
-        (asserts! (is-eq tx-sender sender) err-caller-not-sender)
-        (nft-transfer? MI-token token-id sender recipient)
-        ;; built in errors : u1 => sender does not own the asset
-        ;; u2 => sender and recipient same
-        ;; u3 asset does not exist????
-    )
-)
+
+;;;;;;;;;;;;;;;;;;;; CALLS ON DEPLOYMENT ;;;;;;;;;;;;;;;;;;;
+
+(map-set admin-access { admin-principal: tx-sender } { is-authorised: true })
