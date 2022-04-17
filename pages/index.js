@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import IndexLayout from "layouts/Index.js";
 import { userAcessToken } from "utils/fetchUserDetails";
+import { getUserData } from "utils/auth-wallet";
 
 // Landing Page
 
@@ -15,7 +16,17 @@ export default function Index() {
 		const accessToken = userAcessToken();
 
 		if (accessToken) {
-			router.push("/dashboard");
+			try {
+				const x = getUserData();
+				console.log(x)
+				router.push("/dashboard");
+			  }
+			  catch(err) {
+				router.push("/connect-wallet")
+	
+			  }
+		
+			
 		}
 	}, []);
 

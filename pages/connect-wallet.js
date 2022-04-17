@@ -1,17 +1,46 @@
-import React from "react";
-import Link from "next/link";
-import { createPopper } from "@popperjs/core";
-import Image from "next/image";
-import { AuthProvider } from "utils/auth";
+/* eslint-disable react/jsx-no-target-blank */
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+
+import IndexLayout from "layouts/Index.js";
+import { userAcessToken } from "utils/fetchUserDetails";
 import { userAuth } from "utils/auth";
-import firebase from "firebase/compat/app";
+
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { firebaseClient } from "utils/firebaseClient";
 import { walletConnect } from "utils/authentication";
+import { getUserData } from "utils/auth-wallet";
+import { logOut } from "utils/authentication";
 
-const ConnectWallet = (props) => {
-	// dropdown props
+
+// Landing Page
+
+export default function Index() {
+	const [showLoginPop, setshowLoginPop] = React.useState(false);
+    const [isLoading, setLoading] = React.useState(true);
+
+
+	const router = useRouter();
+	useEffect(() => {
+		const accessToken = userAcessToken();
+
+		if (accessToken) {
+			
+		}else{
+            router.push("/");
+        }
+
+        try {
+			const x = getUserData();
+            router.push("/dashboard")
+
+		  }
+		  catch(err) {
+              setLoading(false)
+			
+		  }
+	}, []);
 
 	const connectWallet = () => {
 		walletConnect().then(() => {
@@ -19,11 +48,23 @@ const ConnectWallet = (props) => {
 		});
 	};
 
+    const signOut = () => {
+        logOut().then(() => {
+            console.log("Logout successful");
+            router.push("/")
+          });
+    }
+
 	const { user } = userAuth();
 	firebaseClient();
+  
+
 	return (
+       
 		<>
-			<div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+         {isLoading?null:
+         <div>
+			<div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 outline-none focus:outline-none">
 				<div className="relative w-auto my-6 mx-auto max-w-3xl">
 					{/*content*/}
 					<div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full custom-bg-offwhite outline-none focus:outline-none">
@@ -58,11 +99,24 @@ const ConnectWallet = (props) => {
 							<p>Connect and Get Started.</p>
 						</div>
 					</div>
+                    <div>
+                    <button
+                    onClick={signOut}
+                  className="mt-4 bg-red-700 custom-rounded-20 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                >
+                  <span>Sign Out</span>
+                </button>
+                    </div>
+                    
 				</div>
+                
 			</div>
-			<div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+            
+			{/* <div className="opacity-25 fixed inset-0 z-40 bg-black"></div> */}
+            </div>
+    }
 		</>
-	);
-};
 
-export default ConnectWallet;
+
+	);
+}

@@ -1,16 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import LoginSignup from "components/Auth/loginSignupPopup";
+import { userAcessToken } from "utils/fetchUserDetails";
 
 export default function Navbar() {
+	const [loginBtnShow, setLoginBtn] = useState(true);
+	useEffect(() => {
+		const accessToken = userAcessToken();
+
+		if (accessToken) {	
+			setLoginBtn(false);
+		}
+	}, []);
 	return (
 		<nav className="flex bg-blueGray-100 h-16 fixed top-0 z-50 w-full my-4 mx-4 items-center justify-center">
+			<div className="w-1/12">
+				
+			</div>
 			<div className="w-1/12">
 				<div>
 					<Link href="/">Mint It</Link>
 				</div>
 			</div>
-			<ul className="flex w-10/12 items-center justify-center">
+			<ul className="flex w-8/12 items-center justify-center">
 				<li className="mx-4">
 					<Link href="/">About</Link>
 				</li>
@@ -27,9 +39,11 @@ export default function Navbar() {
 					<Link href="/">Journey</Link>
 				</li>
 			</ul>
-			<div className="flex w-1/12">
+			{loginBtnShow?<div className="flex w-2/12">
 				<LoginSignup />
-			</div>
+			</div>:null
+			}
+			
 		</nav>
 	);
 }

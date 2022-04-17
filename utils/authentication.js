@@ -10,11 +10,13 @@ import {
 } from "firebase/auth";
 import "firebase/compat/auth";
 import { firebaseClient } from "utils/firebaseClient";
-import { useRouter } from "next/router";
+
 import { authenticate } from "utils/auth-wallet";
+
 
 const firebaseAuth = getAuth(firebaseClient());
 const provider = new GoogleAuthProvider();
+
 
 let user_data = {};
 
@@ -105,6 +107,28 @@ const passwordReset = async (email) => {
     });
 };
 
+const logOut = async () =>{
+
+    await firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        // Sign-out successful.
+        localStorage.removeItem("user");
+				localStorage.removeItem("accessToken");
+
+        return new Promise((resolve) => {
+          resolve(1);
+        });
+      
+      })
+      .catch((error) => {
+        console.log("Signout Error: ", error);
+        // An error happened.
+      });
+  
+}
+
 export {
   loginAuth,
   signupAuth,
@@ -112,4 +136,5 @@ export {
   walletConnect,
   getUserDetails,
   passwordReset,
+  logOut
 };
